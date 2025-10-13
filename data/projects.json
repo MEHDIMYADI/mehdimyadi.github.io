@@ -1,0 +1,307 @@
+[
+	{
+		"name": {
+			"en": "WinUI3 Desktop App",
+			"fa": "اپلیکیشن دسکتاپ WinUI3"
+		},
+		"description": {
+			"en": "modern Windows desktop application using WinUI3 framework.",
+			"fa": "اپلیکیشن دسکتاپ مدرن ویندوز با استفاده از فریم‌ورک WinUI3."
+		},
+		"links": [
+			{
+				"url": "https://github.com/MEHDIMYADI/RoozegaarCalendar-Releases?tab=readme-ov-file#roozegaar-calendar",
+				"tooltip": {
+					"en": "Roozegaar Calendar",
+					"fa": "تقویم روزگار"
+				},
+				"icon": "fa-brands fa-windows"
+			},
+			{
+				"url": "https://github.com/MEHDIMYADI/RoozegaarFinance-Releases?tab=readme-ov-file#roozegaar-finance-platform",
+				"tooltip": {
+					"en": "Roozegaar Finance Platform",
+					"fa": "سامانه مالی روزگار"
+				},
+				"icon": "fa-brands fa-windows"
+			},
+			{
+				"url": "https://github.com/MEHDIMYADI/RoozegaarVoiceAssistant-Releases?tab=readme-ov-file#roozegaar-voice-assistant",
+				"tooltip": {
+					"en": "Roozegaar Voice Assistant",
+					"fa": "دستیار صوتی روزگار"
+				},
+				"icon": "fa-brands fa-windows"
+			},
+			{
+				"url": "https://github.com/MEHDIMYADI/Debloater-Pro?tab=readme-ov-file#debloater-pro---windows-optimization-tool",
+				"tooltip": {
+					"en": "Debloater Pro",
+					"fa": "سبک‌ساز حرفه‌ای"
+				},
+				"icon": "fa-brands fa-windows"
+			}
+		],
+		"images": [
+			"https://placehold.co/600x400/FF0000/FFF?text=Roozegaar Calendar",
+			"https://placehold.co/600x400/00FF00/000?text=Roozegaar Finance Platform",
+			"https://placehold.co/600x400/000000/FFF?text=Roozegaar Voice Assistant",
+			"https://placehold.co/600x400/0000FF/FFF?text=Debloater Pro"
+		]
+	},
+	{
+		"name": {
+			"en": "WinUI3 Helper Libraries",
+			"fa": "کتابخانه‌های کمکی WinUI3"
+		},
+		"description": {
+			"en": "An open-source collection of helper components and utilities for WinUI3, extending the core capabilities of Windows desktop applications.",
+			"fa": "مجموعه‌ای متن‌باز از کامپوننت‌ها و ابزارهای کمکی WinUI3 برای گسترش قابلیت‌های اصلی دسکتاپ."
+		},
+		"links": [
+			{
+				"url": "https://github.com/MEHDIMYADI/WindowSizeLimiterWinUI3",
+				"tooltip": {
+					"en": "Window Size Limiter (WinUI3)",
+					"fa": "محدودکننده اندازه پنجره (WinUI3)"
+				},
+				"icon": "fa-brands fa-windows"
+			},
+			{
+				"url": "https://github.com/MEHDIMYADI/SystemTrayWinUI3",
+				"tooltip": {
+					"en": "System Tray for WinUI3",
+					"fa": "سینی سیستم برای WinUI3"
+				},
+				"icon": "fa-brands fa-windows"
+			}
+		],
+		"images": [
+			"https://placehold.co/600x400/666666/FFF?text=Window+Size+Limiter",
+			"https://placehold.co/600x400/333333/FFF?text=System+Tray+WinUI3"
+		]
+	},
+	{
+		"name": {
+			"en": "Desktop Utilities (C# / .NET Framework)",
+			"fa": "ابزارهای دسکتاپ (C# / .NET Framework)"
+		},
+		"description": {
+			"en": "A collection of lightweight desktop utilities built with C# and .NET Framework, designed to enhance user experience and system management.",
+			"fa": "مجموعه‌ای از ابزارهای کمکی دسکتاپ ساخته‌شده با C# و .NET Framework، با هدف بهبود تجربه کاربری و مدیریت سیستم."
+		},
+		"links": [
+			{
+				"url": "https://github.com/MEHDIMYADI/HA6400AdminUnlocker",
+				"tooltip": {
+					"en": "HA6400 Admin Unlocker",
+					"fa": "ابزار فعال‌سازی ادمین HA6400"
+				},
+				"icon": "fa-brands fa-windows"
+			},
+			{
+				"url": "https://github.com/MEHDIMYADI/MultiDisplayTool",
+				"tooltip": {
+					"en": "MultiDisplay Tool",
+					"fa": "ابزار چندنمایشه"
+				},
+				"icon": "fa-brands fa-windows"
+			}
+		],
+		"images": [
+			"https://placehold.co/600x400/FF6347/FFFFFF?text=HA6400+Admin+Unlocker",
+			"https://placehold.co/600x400/4682B4/FFFFFF?text=MultiDisplay+Tool"
+		]
+	},
+	{
+		"name": {
+			"en": "Flutter Mobile App",
+			"fa": "اپلیکیشن موبایل Flutter"
+		},
+		"description": {
+			"en": "Cross-platform mobile app built with Flutter, showcasing responsive UI and smooth performance.",
+			"fa": "اپلیکیشن موبایل چندسکویی با Flutter، با رابط کاربری واکنش‌گرا و عملکرد روان."
+		},
+		"links": [
+			{
+				"url": "",
+				"tooltip": {
+					"en": "GitHub Repo",
+					"fa": "مخزن گیت‌هاب"
+				},
+				"icon": "fa-brands fa-flutter"
+			}
+		],
+		"images": [
+			"https://placehold.co/600x400/FFA500/FFF?text=Flutter+1",
+			"https://placehold.co/600x400/800080/FFF?text=Flutter+2"
+		]
+	},
+	{
+		"name": {
+			"en": "Kotlin Applications",
+			"fa": "اپلیکیشن‌های کاتلین"
+		},
+		"description": {
+			"en": "A growing collection of applications built with Kotlin, showcasing various features and user experiences across different platforms.",
+			"fa": "مجموعه‌ای در حال گسترش از اپلیکیشن‌های ساخته‌شده با کاتلین با نمایش قابلیت‌ها و تجربه‌های کاربری متنوع در پلتفرم‌های مختلف."
+		},
+		"links": [
+			{
+				"url": "https://github.com/persian-calendar/persian-calendar",
+				"tooltip": {
+					"en": "Android Persian Calendar",
+					"fa": "تقویم فارسی اندروید"
+				},
+				"icon": "fa-brands fa-android"
+			},
+			{
+				"url": "https://github.com/MEHDIMYADI/MyWidget",
+				"tooltip": {
+					"en": "My Widget",
+					"fa": "ویجت من"
+				},
+				"icon": "fa-brands fa-android"
+			}
+		],
+		"images": [
+			"https://placehold.co/600x400/32CD32/FFFFFF?text=Android+Persian+Calendar",
+			"https://placehold.co/600x400/32CD32/FFFFFF?text=My Widget"
+		]
+	},
+	{
+		"name": {
+			"en": "Java Applications",
+			"fa": "اپلیکیشن‌های جاوا"
+		},
+		"description": {
+			"en": "A collection of Android applications historically built with Java before Kotlin became widely used.",
+			"fa": "مجموعه‌ای از اپلیکیشن‌های اندروید که پیش از همه‌گیر شدن کاتلین با جاوا ساخته شده‌اند."
+		},
+		"links": [
+			{
+				"url": "https://github.com/MEHDIMYADI/CompassBlind",
+				"tooltip": {
+					"en": "CompassBlind",
+					"fa": "قطب‌نما برای نابینایان"
+				},
+				"icon": "fa-brands fa-android"
+			},
+			{
+				"url": "https://github.com/MEHDIMYADI/PersianCalendar2",
+				"tooltip": {
+					"en": "PersianCalendar2",
+					"fa": "تقویم فارسی ۲"
+				},
+				"icon": "fa-brands fa-android"
+			}
+		],
+		"images": [
+			"https://placehold.co/600x400/32CD32/FFF?text=CompassBlind",
+			"https://placehold.co/600x400/008000/FFF?text=PersianCalendar2"
+		]
+	},
+	{
+		"name": {
+			"en": "Arduino Robotics Project",
+			"fa": "پروژه رباتیک آردوینو"
+		},
+		"description": {
+			"en": "Automated robot project with sensors and real-time control using Arduino and C++.",
+			"fa": "پروژه رباتیک خودکار با سنسورها و کنترل زمان واقعی با Arduino و C++."
+		},
+		"links": [
+			{
+				"url": "",
+				"tooltip": {
+					"en": "GitHub Repo",
+					"fa": "مخزن گیت‌هاب"
+				},
+				"icon": "fa-solid fa-robot"
+			}
+		],
+		"images": [
+			"https://placehold.co/600x400/00FFFF/000?text=Arduino+1",
+			"https://placehold.co/600x400/FFC0CB/000?text=Arduino+2"
+		]
+	},
+	{
+		"name": {
+			"en": "Static Portfolio Website",
+			"fa": "وب‌سایت استاتیک پرتفولیو"
+		},
+		"description": {
+			"en": "Designed and deployed static personal websites using HTML, CSS, JS on GitHub Pages.",
+			"fa": "وب‌سایت‌های استاتیک شخصی با HTML، CSS و JS طراحی و روی GitHub Pages منتشر شد."
+		},
+		"links": [
+			{
+				"url": "",
+				"tooltip": {
+					"en": "GitHub Repo",
+					"fa": "مخزن گیت‌هاب"
+				},
+				"icon": "fa-solid fa-globe"
+			}
+		],
+		"images": [
+			"https://placehold.co/600x400/FFFF00/000?text=Portfolio+1",
+			"https://placehold.co/600x400/008000/FFF?text=Portfolio+2"
+		]
+	},
+	{
+		"name": {
+			"en": "Excel Automation Add-in",
+			"fa": "افزونه اتوماسیون Excel"
+		},
+		"description": {
+			"en": "Developed productivity plugins for Excel using Visual Studio and C#.",
+			"fa": "افزونه‌های افزایش بهره‌وری Excel با Visual Studio و C# توسعه داده شد."
+		},
+		"links": [
+			{
+				"url": "",
+				"tooltip": {
+					"en": "GitHub Repo",
+					"fa": "مخزن گیت‌هاب"
+				},
+				"icon": "fa-solid fa-file-excel"
+			}
+		],
+		"images": [
+			"https://placehold.co/600x400/800080/FFF?text=Excel+1",
+			"https://placehold.co/600x400/FFC107/000?text=Excel+2"
+		]
+	},
+	{
+		"name": {
+			"en": "Setup & Automation Scripts",
+			"fa": "اسکریپت‌های راه‌اندازی و خودکارسازی"
+		},
+		"description": {
+			"en": "Collection of scripts for automating software setup, installation, and development environment configuration.",
+			"fa": "مجموعه‌ای از اسکریپت‌های برای خودکارسازی نصب نرم‌افزارها، راه‌اندازی محیط توسعه و پیکربندی."
+		},
+		"links": [
+			{
+				"url": "https://github.com/MEHDIMYADI/flutter-setup-console",
+				"tooltip": {
+					"en": "Flutter Setup Console Script",
+					"fa": "اسکریپت راه‌اندازی Flutter"
+				},
+				"icon": "fa-solid fa-terminal"
+			},
+			{
+				"url": "https://github.com/MEHDIMYADI/Visual-Studio-2026-Offline-Installer-Script",
+				"tooltip": {
+					"en": "Visual Studio 2026 Offline Installer Script",
+					"fa": "اسکریپت نصب آفلاین Visual Studio 2026"
+				},
+				"icon": "fa-solid fa-terminal"
+			}
+		],
+		"images": [
+			"https://placehold.co/600x400/000000/FFF?text=Automation+Scripts"
+		]
+	}
+]

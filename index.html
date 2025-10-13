@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<!-- ==================================================
+                Mehdi Dimyadi Portfolio
+   ================================================== -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مهدی دیمیادی | Mehdi Dimyadi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+    <noscript>
+      <div class="noscript-container" role="alert" aria-live="assertive">
+        <div class="noscript-box">
+          <div class="noscript-message" dir="rtl">
+            <p><strong>جاوا اسکریپت برای نمایش این سایت ضروری است.</strong></p>
+            <p>لطفاً جاوا اسکریپت را فعال و صفحه را بارگذاری کنید.</p>
+          </div>
+          <hr>
+          <div class="noscript-message" dir="ltr">
+            <p><strong>JavaScript is required to view this site properly.</strong></p>
+            <p>Please enable JavaScript and reload the page.</p>
+          </div>
+        </div>
+      </div>
+    </noscript>
+    
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="ring">
+            <p id="loading-title"></p>
+            <span></span>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <nav>
+            <h1 id="logo"></h1>
+            <div id="navMenu">
+                <a class="nav-link" data-section="hero"></a>
+                <a class="nav-link" data-section="skills-title"></a>
+                <a class="nav-link" data-section="projects-title"></a>
+                <a class="nav-link" data-section="experience-title"></a>
+                <a class="nav-link" data-section="footer"></a>
+            </div>
+            <div class="nav-controls">
+                <button id="themeSwitch">
+                    <i id="themeIcon" class="fas fa-moon"></i>
+                </button>
+                <button id="langSwitch"></button>
+                <button id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero">
+        <div class="hero-content">
+            <img id="hero-avatar" alt="Mehdi Dimyadi Avatar" />
+            <h2 id="hero-title"></h2>
+            <p id="hero-subtitle"></p>
+
+            <div class="mountain-climber">
+                <div class="mountain-box"></div>
+                <p class="mountain-hill"></p>
+                <div class="climber-quote" id="climber-quote">
+                </div>
+            </div>
+        </div>
+        <a href="#skills-title" class="scroll-down">
+            <i class="fas fa-angle-down"></i>
+        </a>
+
+    </section>
+
+
+    <!-- Skills -->
+    <section id="skills">
+        <h2 id="skills-title" class="section-title"></h2>
+        <div id="skills-container"></div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2 id="projects-title" class="section-title"></h2>
+        <div id="projects-container"></div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <h2 id="experience-title" class="section-title"></h2>
+        <div id="experience-container"></div>
+    </section>
+
+    <!-- Contact -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <p id="dimyadi-title"></p>
+            </div>
+            <div class="footer-center">
+                <p id="footer-copyright"></p>
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/MEHDIMYADI" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github fa-lg"></i>
+                </a>
+                <a href="https://linkedin.com/in/mehdimyadi" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin fa-lg"></i>
+                </a>
+                <a href="mailto:mahdi2006d@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope fa-lg"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

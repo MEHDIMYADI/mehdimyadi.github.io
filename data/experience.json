@@ -1,0 +1,110 @@
+[
+	{
+		"role": {
+			"en": "Mobile Developer",
+			"fa": "توسعه‌دهنده موبایل"
+		},
+		"company": {
+			"en": "Freelance / Personal Projects",
+			"fa": "فریلنس / پروژه‌های شخصی"
+		},
+		"period": {
+			"en": "2020 - Present",
+			"fa": "۱۳۹۹ - تاکنون"
+		},
+		"details": {
+			"en": "Developed numerous Android and cross-platform Flutter applications, focusing on modern architecture, responsive UI, performance optimization, and accessibility features.",
+			"fa": "چندین اپلیکیشن اندروید و موبایل چندسکویی با Flutter توسعه داده شد، با تمرکز بر معماری مدرن، رابط کاربری واکنش‌گرا، بهینه‌سازی عملکرد و ویژگی‌های دسترسی‌پذیری."
+		}
+	},
+	{
+		"role": {
+			"en": "Desktop Software Developer",
+			"fa": "توسعه‌دهنده نرم‌افزار دسکتاپ"
+		},
+		"company": {
+			"en": "Independent / WinUI3 & .NET Projects",
+			"fa": "پروژه‌های مستقل / WinUI3 و دات‌نت"
+		},
+		"period": {
+			"en": "2020 - Present",
+			"fa": "۱۳۹۹ - تاکنون"
+		},
+		"details": {
+			"en": "Built Windows desktop applications using C#, WinUI3, WPF, and .NET frameworks, including UI/UX design, data handling, and functional implementation.",
+			"fa": "اپلیکیشن‌های دسکتاپ ویندوز با استفاده از C#، WinUI3، WPF و فریم‌ورک‌های .NET ساخته شد، شامل طراحی رابط کاربری، مدیریت داده و پیاده‌سازی قابلیت‌ها."
+		}
+	},
+	{
+		"role": {
+			"en": "Web Developer",
+			"fa": "توسعه‌دهنده وب"
+		},
+		"company": {
+			"en": "Freelance / Personal Websites",
+			"fa": "فریلنس / وب‌سایت‌های شخصی"
+		},
+		"period": {
+			"en": "2020 - Present",
+			"fa": "۱۳۹۹ - تاکنون"
+		},
+		"details": {
+			"en": "Designed static and interactive websites using HTML, CSS, JavaScript, and GitHub Pages, integrating APIs and data-driven functionality where needed.",
+			"fa": "وب‌سایت‌های استاتیک و تعاملی با HTML، CSS و JavaScript طراحی شد و در GitHub Pages میزبانی شد، با اتصال به API و مدیریت داده در صورت نیاز."
+		}
+	},
+	{
+		"role": {
+			"en": "Arduino & Embedded Systems Developer",
+			"fa": "توسعه‌دهنده آردوینو و سیستم‌های تعبیه‌شده"
+		},
+		"company": {
+			"en": "Hobby & Personal Projects",
+			"fa": "پروژه‌های سرگرمی و شخصی"
+		},
+		"period": {
+			"en": "2010 - Present",
+			"fa": "۱۳۸۹ - تاکنون"
+		},
+		"details": {
+			"en": "Designed and implemented microcontroller projects, robotics, automation systems, and IoT devices using Arduino, sensors, C++, and electronics expertise.",
+			"fa": "پروژه‌های میکروکنترلر، رباتیک، سیستم‌های اتوماسیون و دستگاه‌های IoT با استفاده از آردوینو، سنسورها، C++ و دانش الکترونیک طراحی و پیاده‌سازی شد."
+		}
+	},
+	{
+		"role": {
+			"en": "Excel & Office Automation Developer",
+			"fa": "توسعه‌دهنده افزونه و اتوماسیون Excel"
+		},
+		"company": {
+			"en": "Independent Projects",
+			"fa": "پروژه‌های مستقل"
+		},
+		"period": {
+			"en": "2015 - Present",
+			"fa": "۱۳۹۴ - تاکنون"
+		},
+		"details": {
+			"en": "Developed productivity add-ins and automation tools for Excel using Visual Studio and C#, streamlining data management and workflow processes.",
+			"fa": "افزونه‌ها و ابزارهای اتوماسیون برای Excel با استفاده از Visual Studio و C# توسعه داده شد، برای بهینه‌سازی مدیریت داده و فرآیندهای کاری."
+		}
+	},
+	{
+		"role": {
+			"en": "Software Enthusiast & Early Experience",
+			"fa": "علاقه‌مند به نرم‌افزار و تجربه‌های اولیه"
+		},
+		"company": {
+			"en": "Personal Exploration",
+			"fa": "کاوش شخصی"
+		},
+		"period": {
+			"en": "2000 - 2020",
+			"fa": "۱۳۷۹ - ۱۳۹۹"
+		},
+		"details": {
+			"en": "Started exploring electronics, hardware, and software development from age 13, experimenting with microcontrollers, sensors, robotics, and programming across multiple platforms.",
+			"fa": "از سن ۱۳ سالگی شروع به کاوش در حوزه الکترونیک، سخت‌افزار و توسعه نرم‌افزار کردم و با میکروکنترلرها، سنسورها، رباتیک و برنامه‌نویسی روی پلتفرم‌های مختلف آزمایش کردم."
+		}
+	}
+]

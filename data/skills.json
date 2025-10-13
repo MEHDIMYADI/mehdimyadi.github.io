@@ -1,0 +1,110 @@
+[
+	{
+		"name": {
+			"en": "Kotlin Applications",
+			"fa": "اپلیکیشن‌های Kotlin"
+		},
+		"description": {
+			"en": "Developed Android applications using Kotlin, including accessibility tools, widgets, and utilities.",
+			"fa": "اپلیکیشن‌های اندروید با Kotlin شامل ابزارهای دسترسی‌پذیری، ویجت‌ها و ابزارهای کمکی توسعه داده شد."
+		},
+		"icon": "fa-brands fa-android",
+		"level": 70
+	},
+	{
+		"name": {
+			"en": "Java Applications",
+			"fa": "اپلیکیشن‌های جاوا"
+		},
+		"description": {
+			"en": "Android applications historically built with Java before Kotlin became widely used.",
+			"fa": "اپلیکیشن‌های اندروید که پیش از همه‌گیر شدن Kotlin با Java ساخته شده‌اند."
+		},
+		"icon": "fa-brands fa-android",
+		"level": 55
+	},
+	{
+		"name": {
+			"en": "Flutter",
+			"fa": "فلاتر"
+		},
+		"description": {
+			"en": "Built cross-platform mobile apps with Flutter and Dart, focusing on smooth UI and performance.",
+			"fa": "اپلیکیشن‌های موبایل چندسکویی با Flutter و Dart با تمرکز بر رابط کاربری روان و عملکرد عالی ساخته شد."
+		},
+		"icon": "fa-brands fa-flutter",
+		"level": 85
+	},
+	{
+		"name": {
+			"en": "C# / .NET",
+			"fa": "C# / دات‌نت"
+		},
+		"description": {
+			"en": "Developed desktop applications using WinUI3, WPF, and other .NET frameworks.",
+			"fa": "اپلیکیشن‌های دسکتاپ با استفاده از WinUI3، WPF و دیگر فریم‌ورک‌های .NET توسعه داده شد."
+		},
+		"icon": "fa-brands fa-windows",
+		"level": 60
+	},
+	{
+		"name": {
+			"en": "Arduino / C++",
+			"fa": "آردوینو / C++"
+		},
+		"description": {
+			"en": "Created microcontroller projects including sensors, robotics, and automation.",
+			"fa": "پروژه‌های میکروکنترلر شامل سنسورها، رباتیک و اتوماسیون ایجاد شد."
+		},
+		"icon": "fa-solid fa-robot",
+		"level": 65
+	},
+	{
+		"name": {
+			"en": "Web Development",
+			"fa": "توسعه وب"
+		},
+		"description": {
+			"en": "Designed static websites and interactive web pages using HTML, CSS, JS, and GitHub Pages.",
+			"fa": "وب‌سایت‌های استاتیک و صفحات تعاملی با HTML، CSS، JS طراحی و روی GitHub Pages منتشر شد."
+		},
+		"icon": "fa-solid fa-globe",
+		"level": 75
+	},
+	{
+		"name": {
+			"en": "Excel Add-ins",
+			"fa": "افزونه‌های Excel"
+		},
+		"description": {
+			"en": "Developed Excel automation tools and plugins using Visual Studio and C#.",
+			"fa": "ابزارها و افزونه‌های اتوماسیون Excel با Visual Studio و C# توسعه داده شد."
+		},
+		"icon": "fa-solid fa-file-excel",
+		"level": 95
+	},
+	{
+		"name": {
+			"en": "Git & GitHub",
+			"fa": "Git و GitHub"
+		},
+		"description": {
+			"en": "Version control and project management using Git and GitHub for all projects.",
+			"fa": "کنترل نسخه و مدیریت پروژه با Git و GitHub برای تمامی پروژه‌ها."
+		},
+		"icon": "fa-brands fa-github",
+		"level": 80
+	},
+	{
+		"name": {
+			"en": "APIs & JSON",
+			"fa": "API و JSON"
+		},
+		"description": {
+			"en": "Experience with REST APIs and data handling in JSON for Android and Flutter applications.",
+			"fa": "تجربه کار با REST API و مدیریت داده‌ها با JSON در اپلیکیشن‌های اندروید و Flutter."
+		},
+		"icon": "fa-solid fa-code",
+		"level": 70
+	}
+]

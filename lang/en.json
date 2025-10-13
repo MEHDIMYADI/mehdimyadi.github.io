@@ -1,0 +1,32 @@
+{
+	"logo": {
+		"title": "DIMYADI"
+	},
+	"nav": {
+		"home": "Home",
+		"skills": "Skills",
+		"projects": "Projects",
+		"experience": "Experience",
+		"footer": "Contact"
+	},
+	"loading": {
+		"title": "Loading..."
+	},
+	"hero": {
+		"title": "Mehdi Dimyadi",
+		"subtitle": "I'm a cross-platform software developer who loves turning ideas into seamless, intelligent, and high-performing digital experiences. I focus on crafting clean code, thoughtful design, and smooth interactions that feel natural to users. Always learning, always building — because great software is never finished.",
+		"quote": "Step by step to success…"
+	},
+	"skills": {
+		"title": "Skills"
+	},
+	"projects": {
+		"title": "Projects"
+	},
+	"experience": {
+		"title": "Experience"
+	},
+	"footer": {
+        "dimyadi": "Dimyadi – derived from 'Dimyad', meaning generosity, nobility, and detachment from worldly possessions"
+	}
+}
