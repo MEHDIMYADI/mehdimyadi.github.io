@@ -886,6 +886,13 @@ nav {
     }
 }
 
+@media (max-width: 768px) {
+  #hero-subtitle {
+      font-size: 1.1rem;
+      line-height: 1.2;
+  }
+}
+
 /* ==========================
    Cards (Skills, Projects, Experience)
 ========================== */
