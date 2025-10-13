@@ -887,6 +887,16 @@ nav {
 }
 
 @media (max-width: 768px) {
+  .hero-content {
+    gap: 0rem;
+    padding: 0rem;
+  }
+
+  .hero-layout {
+    gap: 1rem;
+    margin-top: 0rem;
+  }
+  
   #hero-subtitle {
       font-size: 1.1rem;
       line-height: 1.2;
