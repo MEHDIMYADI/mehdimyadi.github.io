@@ -60,7 +60,7 @@ body.light {
     --dash-color: #e53e3e;
     --overlay-bg: rgba(255, 255, 255, 0.2);
     --overlay-text: #1e293b;
-    --flag-bg: rgba(135, 206, 250, 0.4);
+    --flag-bg: rgba(100, 160, 220, 0.4);
 }
 
 /* ==========================
@@ -475,6 +475,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 4px solid var(--accent-color);
+    box-shadow: 0 0 25px var(--shadow-color);
 }
 .mountain-flag div, .mountain-flag div::after, .mountain-flag div::before {
     position: absolute;
@@ -782,11 +784,11 @@ nav {
 
 @media (max-width: 768px) {
     .mountain-flag {
-        width: 100px;
-        height: 100px;
+        width: 130px;
+        height: 130px;
     }
     .flag-scene {
-        transform: scale(0.5);
+        transform: scale(0.65);
     }
 }
 /* ==========================
@@ -816,8 +818,8 @@ nav {
 }
 
 #hero-avatar {
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     border: 4px solid var(--accent-color);
     box-shadow: 0 0 25px var(--shadow-color);
@@ -885,7 +887,7 @@ nav {
 
 @media (max-width: 768px) {
   .hero-content {
-    gap: 0rem;
+    gap: 2rem;
     padding: 0rem;
   }
 
@@ -895,13 +897,13 @@ nav {
   }
   
   #hero-avatar {
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
   }
   
   #hero-subtitle {
       font-size: 1.1rem;
-      line-height: 1.2;
+      line-height: 1.1;
   }
 }
 
