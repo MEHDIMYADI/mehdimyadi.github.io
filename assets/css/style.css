@@ -30,8 +30,7 @@
     --overlay-bg: rgba(0, 0, 0, 0.2);
     --overlay-text: #ffffff;
     --flag-bg: rgba(25, 50, 80, 0.5);
-    /* تیره‌تر، برای حالت dark */
-
+    --vh: 1vh;
 }
 
 /* ==========================
@@ -62,8 +61,6 @@ body.light {
     --overlay-bg: rgba(255, 255, 255, 0.2);
     --overlay-text: #1e293b;
     --flag-bg: rgba(135, 206, 250, 0.4);
-    /* روشن‌تر، برای حالت light */
-
 }
 
 /* ==========================
@@ -796,7 +793,7 @@ nav {
    Hero Section
 ========================== */
 #hero {
-    height: 100vh;
+    height: calc(var(--vh) * 100);
     display: flex;
     flex-direction: column;
     justify-content: center;
