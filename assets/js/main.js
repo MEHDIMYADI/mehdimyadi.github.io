@@ -2,7 +2,16 @@
                Mehdi Dimyadi Portfolio
    ================================================== */
 
-// Global variables
+// ---------------------- Set VH for mobile ----------------------
+function setVh() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+window.addEventListener('resize', setVh);
+window.addEventListener('load', setVh);
+setVh();
+
+// ---------------------- Global variables ----------------------
 let currentLang = localStorage.getItem("lang") || "en";
 let currentTheme = localStorage.getItem("theme") || "dark";
 let isMenuOpen = false;
@@ -164,7 +173,7 @@ function setupScrollDown() {
     });
 }
 
-// ---------------------- Init ----------------------
+// ---------------------- DOMContentLoaded ----------------------
 document.addEventListener("DOMContentLoaded", () => {
     document.documentElement.lang = currentLang;
     applyTheme(currentTheme);
