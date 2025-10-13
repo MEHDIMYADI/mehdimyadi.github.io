@@ -11,6 +11,8 @@ let isMenuOpen = false;
 function loadingScreen() {
   const loadingScreen = document.getElementById('loadingScreen');
   
+  loadingScreen.style.display = 'flex';
+  
   window.addEventListener('load', () => {
     setTimeout(() => {
       loadingScreen.classList.add('hidden');
