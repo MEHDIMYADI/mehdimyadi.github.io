@@ -11,7 +11,7 @@
     --card-bg: rgba(24, 33, 54, 0.85);
     --card-border: rgba(100, 116, 139, 0.3);
     --accent-color: #60a5fa;
-    --border-color: rgba(255, 255, 255, 0.1);    
+    --border-color: rgba(255, 255, 255, 0.1);
     --link-color: #93c5fd;
     --shadow-color: rgba(96, 165, 250, 0.3);
     --header-bg: rgba(15, 23, 42, 0.85);
@@ -21,6 +21,17 @@
             #312e81 50%,
             #1e40af 75%,
             #0b1120 100%);
+    --mountain-color: #7f8c8d;
+    --mountain-shadow: rgba(0, 0, 0, 0.2);
+    --cloud-color: #ecf0f1;
+    --flag-pole: #9E6D4D;
+    --flag-flag: #e74c3c;
+    --dash-color: #c0392b;
+    --overlay-bg: rgba(0, 0, 0, 0.2);
+    --overlay-text: #ffffff;
+    --flag-bg: rgba(25, 50, 80, 0.5);
+    /* تیره‌تر، برای حالت dark */
+
 }
 
 /* ==========================
@@ -42,6 +53,17 @@ body.light {
             #7dd3fc 50%,
             #38bdf8 75%,
             #e0f2fe 100%);
+    --mountain-color: #95a5a6;
+    --mountain-shadow: rgba(0, 0, 0, 0.1);
+    --cloud-color: #f0f4f8;
+    --flag-pole: #d69d7c;
+    --flag-flag: #f87171;
+    --dash-color: #e53e3e;
+    --overlay-bg: rgba(255, 255, 255, 0.2);
+    --overlay-text: #1e293b;
+    --flag-bg: rgba(135, 206, 250, 0.4);
+    /* روشن‌تر، برای حالت light */
+
 }
 
 /* ==========================
@@ -61,7 +83,7 @@ body::before {
 }
 
 * {
-    -webkit-user-select: none; 
+    -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -123,52 +145,52 @@ body[lang="en"] {
    No Script Screen Styles
 ========================== */
 .noscript-container {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
-  z-index: 9999;
-  padding: 20px;
-  box-sizing: border-box;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .noscript-box {
-  background: #f8d7da;
-  color: #721c24;
-  padding: 25px 30px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-  max-width: 550px;
-  width: 100%;
-  text-align: center;
-  user-select: none;
+    background: #f8d7da;
+    color: #721c24;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    max-width: 550px;
+    width: 100%;
+    text-align: center;
+    user-select: none;
 }
 
 .noscript-box::before {
-  content: "⚠️";
-  font-size: 32px;
-  display: block;
-  margin-bottom: 15px;
+    content: "⚠️";
+    font-size: 32px;
+    display: block;
+    margin-bottom: 15px;
 }
 
 .noscript-box p {
-  margin: 8px 0;
-  font-size: 16px;
-  line-height: 1.4;
+    margin: 8px 0;
+    font-size: 16px;
+    line-height: 1.4;
 }
 
 .noscript-box strong {
-  font-size: 18px;
+    font-size: 18px;
 }
 
 .noscript-box hr {
-  border: none;
-  border-top: 1.5px solid #721c24;
-  margin: 20px 0;
-  opacity: 0.4;
+    border: none;
+    border-top: 1.5px solid #721c24;
+    margin: 20px 0;
+    opacity: 0.4;
 }
 
 .noscript-message[dir="rtl"] {
@@ -442,160 +464,332 @@ nav {
     }
 }
 /* ==========================
-   Mountain Climber Section
+   Mountain Flag Section
 ========================== */
-.mountain-climber {
+.mountain-flag {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    background: var(--flag-bg);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mountain-flag div, .mountain-flag div::after, .mountain-flag div::before {
     position: absolute;
-    bottom: 110px;
-    width: 8em;
-    height: 8em;
-    z-index: 5;
 }
 
-.mountain-hill {
-    position: absolute;
-    width: 8em;
-    height: 9em;
-    top: 2em;
-    left: 3.5em;
-    background-color: transparent;
-    border-left: .3em solid var(--accent-color);
-    transform: rotate(45deg);
-    opacity: 0.7;
-}
-
-.mountain-hill:after {
-    content: '';
-    position: absolute;
-    width: 8em;
-    height: 8em;
+.mountain {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    bottom: 0;
     left: 0;
-    background-color: transparent;
+}
+.mountain::after, .mountain::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+}
+.mountain::after {
+    bottom: -170px;
+    left: -130px;
+}
+.mountain::before {
+    bottom: -200px;
+    left: -50px;
 }
 
-.mountain-box {
+.cloud, .cloud2 {
+    border-radius: 50%;
+}
+.cloud {
+    width: 36px;
+    height: 30px;
+    top: 50px;
+    left: 110px;
+    animation: cloud 20s linear infinite;
+}
+.cloud::before, .cloud::after {
+    content: "";
     position: absolute;
-    left: 0;
-    bottom: -.1em;
-    width: 1.2em;
-    height: 1.2em;
-    background-color: transparent;
-    border: .3em solid var(--accent-color);
-    border-radius: 15%;
-    transform: translate(0, -1em) rotate(-45deg);
-    animation: mountain-climb 4s linear infinite;
-    box-shadow: 0 0 10px var(--shadow-color);
+    border-radius: 50%;
 }
-
-@keyframes mountain-climb {
+.cloud::before {
+    width: 50px;
+    height: 50px;
+    bottom: 0;
+    left: -25px;
+}
+.cloud::after {
+    width: 40px;
+    height: 40px;
+    bottom: 0;
+    left: 15px;
+}
+@keyframes cloud {
     0% {
-        transform: translate(0, -1em) rotate(-45deg);
-        opacity: 1;
-    }
-    5% {
-        transform: translate(0, -1em) rotate(-50deg);
-    }
-    20% {
-        transform: translate(1.2em, -2.4em) rotate(47deg);
-    }
-    25% {
-        transform: translate(1.2em, -2.4em) rotate(45deg);
-        opacity: 0.9;
-    }
-    30% {
-        transform: translate(1.2em, -2.4em) rotate(40deg);
-    }
-    45% {
-        transform: translate(2.4em, -3.6em) rotate(137deg);
-        opacity: 0.8;
-    }
-    50% {
-        transform: translate(2.4em, -3.6em) rotate(135deg);
-    }
-    55% {
-        transform: translate(2.4em, -3.6em) rotate(130deg);
-    }
-    70% {
-        transform: translate(3.6em, -4.8em) rotate(217deg);
-        opacity: 0.7;
-    }
-    75% {
-        transform: translate(3.6em, -4.8em) rotate(220deg);
-    }
-    80% {
-        transform: translate(4.8em, -5.9em) rotate(280deg);
-    }
-    85% {
-        transform: translate(5.2em, -6.2em) rotate(295deg);
-    }
-    90% {
-        transform: translate(5.5em, -6.7em) rotate(305deg);
-    }
-    95% {
-        transform: translate(5.9em, -7.2em) rotate(315deg);
-    }
-    97% {
-        transform: translate(3.6em, -4.8em) rotate(420deg);
-        opacity: 0.85;
+        transform: translateX(-200px);
     }
     100% {
-        transform: translate(0, -1em) rotate(675deg);
-        opacity: 1;
+        transform: translateX(200px);
     }
 }
 
-.climber-quote {
+.cloud2 {
+    width: 18px;
+    height: 15px;
+    top: 30px;
+    left: 125px;
+    animation: cloud2 40s linear infinite;
+}
+.cloud2::before {
+    width: 25px;
+    height: 25px;
+    bottom: 0;
+    left: 7px;
+}
+.cloud2::after {
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+    left: -8px;
+}
+@keyframes cloud2 {
+    0% {
+        transform: translateX(-300px);
+    }
+    100% {
+        transform: translateX(300px);
+    }
+}
+
+.flag {
+    width: 4px;
+    height: 0;
+    top: 54px;
+    left: calc(50% - 2px);
+    animation: pole 10s linear infinite;
+}
+@keyframes pole {
+    0%, 20% {
+        height: 0;
+        top: 54px;
+    }
+    30%, 70% {
+        height: 30px;
+        top: 24px;
+    }
+    80%, 100% {
+        height: 0;
+        top: 54px;
+    }
+}
+.flag::before, .flag::after {
+    content: "";
     position: absolute;
-    background-color: transparent;
-    opacity: 0.3;
-    border-radius: 2px;
-    box-shadow: 0 0 10px var(--shadow-color);
-    text-align: center;
-    font-size: 0.8rem;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    width: max-content;
-    width: 11em;
-    top: 4.3em;
-    left: .9em;
-    transform: rotate(-45deg);
-    border: .1em solid var(--accent-color);
+    top: 0;
+}
+.flag::before {
+    height: 16px;
+    width: 0;
+    left: 4px;
+    animation: flag 10s linear infinite;
+}
+@keyframes flag {
+    30% {
+        width: 0;
+    }
+    35%, 60% {
+        width: 10px;
+    }
+    65%, 100% {
+        width: 0;
+    }
+}
+.flag::after {
+    left: 8px;
+    border-top: 8px solid #e74c3c;
+    border-bottom: 8px solid #e74c3c;
+    border-right: 0 solid transparent;
+    animation: tip 10s linear infinite;
+}
+@keyframes tip {
+    31% {
+        border-right: 0 solid transparent;
+        left: 8px;
+    }
+    37%, 58% {
+        border-right: 8px solid transparent;
+        left: 14px;
+    }
+    64%, 100% {
+        border-right: 0 solid transparent;
+        left: 8px;
+    }
 }
 
-.climber-quote:hover {
-    opacity: 0.9;
-    background-color: var(--link-color);
-    color: var(--bg-color);
-    transform: translateX(-50%) scaleX(1.05);
-    z-index: 10;
+.dash {
+    height: 10px;
+    width: 3px;
+    opacity: 0;
+    animation: dash 10s linear infinite;
+}
+@keyframes dash {
+    0%, 1%, 51%, 100% {
+        opacity: 0;
+    }
+    2%, 50% {
+        opacity: 1;
+    }
+}
+.dash1 {
+    top: 60px;
+    left: 100px;
+    transform: rotate(-10deg);
+    animation-delay: 1.8s;
+}
+.dash2 {
+    top: 74px;
+    left: 100px;
+    transform: rotate(10deg);
+    animation-delay: 1.6s;
+}
+.dash3 {
+    top: 88px;
+    left: 96px;
+    transform: rotate(20deg);
+    animation-delay: 1.4s;
+}
+.dash4 {
+    top: 102px;
+    left: 93px;
+    transform: rotate(0deg);
+    animation-delay: 1.2s;
+}
+.dash5 {
+    top: 116px;
+    left: 96px;
+    transform: rotate(-20deg);
+    animation-delay: 1s;
+}
+.dash6 {
+    top: 130px;
+    left: 102px;
+    transform: rotate(-30deg);
+    animation-delay: 0.8s;
+}
+.dash7 {
+    top: 144px;
+    left: 109px;
+    transform: rotate(-20deg);
+    animation-delay: 0.6s;
+}
+.dash8 {
+    top: 158px;
+    left: 112px;
+    transform: rotate(-10deg);
+    animation-delay: 0.4s;
+}
+.dash9 {
+    top: 172px;
+    left: 113px;
+    transform: rotate(0deg);
+    animation-delay: 0.2s;
+}
+.dash10 {
+    top: 186px;
+    left: 112px;
+    transform: rotate(10deg);
+    animation-delay: 0s;
 }
 
-.climber-quote:hover {
-    background-color: var(--link-color);
-    color: var(--bg-color);
-    transform: scale(1.05);
-    z-index: 5;
+.overlay {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: blurOverlay 10s linear infinite;
+}
+
+@keyframes blurOverlay {
+    0%, 29% {
+        backdrop-filter: blur(0);
+        background: rgba(0, 0, 0, 0);
+        opacity: 0;
+    }
+    30%, 60% {
+        backdrop-filter: blur(3px);
+        background: rgba(0, 0, 0, 0.2);
+        opacity: 1;
+    }
+    70%, 100% {
+        backdrop-filter: blur(0);
+        background: rgba(0, 0, 0, 0);
+        opacity: 0;
+    }
+}
+@keyframes textShow {
+    0%, 29% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    35%, 55% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    65%, 100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+.flag-scene {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-origin: center center;
+    transition: transform 0.4s ease;
+}
+
+.mountain, .mountain::before, .mountain::after {
+    border-bottom: 150px solid var(--mountain-color);
+}
+
+.cloud, .cloud2, .cloud::before, .cloud::after, .cloud2::before, .cloud2::after {
+    background: var(--cloud-color);
+}
+
+.flag {
+    background: var(--flag-pole);
+}
+.flag::before, .flag::after {
+    background: var(--flag-flag);
+    border-top-color: var(--flag-flag);
+    border-bottom-color: var(--flag-flag);
+}
+
+.dash {
+    background: var(--dash-color);
 }
 
 @media (max-width: 768px) {
-    .mountain-climber {
-        bottom: 50px;
-        width: 6em;
-        height: 6em;
+    .mountain-flag {
+        width: 100px;
+        height: 100px;
     }
-
-    .mountain-hill {
-        width: 6em;
-        height: 8em;
-        top: .5em;
-        left: 3em;
-    }
-
-    .climber-quote {
-        width: max-content;
-        width: 13em;
-        top: 3.8em;
-        left: .7em;
-        font-size: 0.6rem;
+    .flag-scene {
+        transform: scale(0.5);
     }
 }
 /* ==========================
@@ -617,15 +811,19 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 800px;
+    text-align: center;
+    gap: 1.2rem;
+    padding: 2rem 1rem;
+    position: relative;
+    z-index: 2;
 }
 
 #hero-avatar {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     border: 4px solid var(--accent-color);
-    box-shadow: 0 0 20px var(--shadow-color);
+    box-shadow: 0 0 25px var(--shadow-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -635,16 +833,27 @@ nav {
 }
 
 #hero-title {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     font-weight: 700;
+}
+
+.hero-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
     margin-top: 1rem;
+    max-width: 900px;
+    width: 100%;
 }
 
 #hero-subtitle {
-    font-size: 1.2rem;
-    opacity: 0.85;
+    flex: 1;
+    font-size: 1.1rem;
     line-height: 1.8;
     text-align: justify;
+    opacity: 0.9;
+    max-width: 500px;
 }
 
 .scroll-down {
@@ -663,20 +872,6 @@ nav {
 
 .scroll-down:hover i {
     transform: translateY(5px);
-}
-
-@media (max-width: 768px) {
-  #hero-title {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-top: .1rem;
-  }
-
-  #hero-subtitle {
-      font-size: 1.1rem;
-      opacity: 0.85;
-      line-height: 1.3;
-  }
 }
 
 @keyframes bounce {
