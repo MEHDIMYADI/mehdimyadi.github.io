@@ -129,10 +129,12 @@ body[lang="en"] {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
   z-index: 9999;
   padding: 20px;
   box-sizing: border-box;
 }
+
 .noscript-box {
   background: #f8d7da;
   color: #721c24;
@@ -144,28 +146,33 @@ body[lang="en"] {
   text-align: center;
   user-select: none;
 }
+
 .noscript-box::before {
   content: "⚠️";
   font-size: 32px;
   display: block;
   margin-bottom: 15px;
 }
+
 .noscript-box p {
   margin: 8px 0;
   font-size: 16px;
   line-height: 1.4;
 }
+
 .noscript-box strong {
   font-size: 18px;
 }
+
 .noscript-box hr {
   border: none;
   border-top: 1.5px solid #721c24;
   margin: 20px 0;
   opacity: 0.4;
 }
+
 .noscript-message[dir="rtl"] {
-    font-family: 'Vazir', Tahoma, Arial, sans-serif;
+    font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
 }
 
 /* ==========================
@@ -380,7 +387,7 @@ nav {
         left: 0;
         right: 0;
         width: 100%;
-        background-color: var(--header-bg);
+        background-color: var(--card-bg);
         backdrop-filter: blur(12px);
         border-top: 1px solid var(--card-border);
         padding: 0;
@@ -571,7 +578,7 @@ nav {
 
 @media (max-width: 768px) {
     .mountain-climber {
-        bottom: 90px;
+        bottom: 50px;
         width: 6em;
         height: 6em;
     }
@@ -603,15 +610,14 @@ nav {
     text-align: center;
     background: var(--hero-gradient);
     position: relative;
-    padding-inline: 2rem;
+    padding-inline: 1rem;
 }
 
 .hero-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    max-width: 700px;
+    max-width: 800px;
 }
 
 #hero-avatar {
@@ -638,6 +644,7 @@ nav {
     font-size: 1.2rem;
     opacity: 0.85;
     line-height: 1.8;
+    text-align: justify;
 }
 
 .scroll-down {
@@ -647,6 +654,7 @@ nav {
     color: var(--accent-color);
     font-size: 2rem;
     cursor: pointer;
+    z-index: 5;
 }
 
 .scroll-down i {
@@ -655,6 +663,20 @@ nav {
 
 .scroll-down:hover i {
     transform: translateY(5px);
+}
+
+@media (max-width: 768px) {
+  #hero-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-top: .1rem;
+  }
+
+  #hero-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.85;
+      line-height: 1.3;
+  }
 }
 
 @keyframes bounce {
