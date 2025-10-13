@@ -21,9 +21,11 @@ function loadingScreen() {
     }, 1500);
   });
   
-  window.addEventListener('beforeunload', () => {
-    document.body.prepend(loadingScreen);
-    loadingScreen.classList.remove('hidden');
+  window.addEventListener('beforeunload', (event) => {
+    if (!event.defaultPrevented) {
+      document.body.prepend(loadingScreen);
+      loadingScreen.classList.remove('hidden');
+    }
   });
 }
 
