@@ -22,10 +22,14 @@ function loadingScreen() {
   });
   
   window.addEventListener('beforeunload', (event) => {
-    if (!event.defaultPrevented) {
-      document.body.prepend(loadingScreen);
-      loadingScreen.classList.remove('hidden');
-    }
+      if (event.target.activeElement.href && event.target.activeElement.href.startsWith('mailto:')) {
+          return;
+      }
+      
+      if (!event.defaultPrevented) {
+          document.body.prepend(loadingScreen);
+          loadingScreen.classList.remove('hidden');
+      }
   });
 }
 
