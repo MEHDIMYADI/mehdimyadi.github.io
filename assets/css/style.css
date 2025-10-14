@@ -101,7 +101,7 @@ body {
 }
 
 html {
-    scroll-behavior: smooth;
+    -behavior: smooth;
 }
 
 h1, h2, h3, p, a {
@@ -323,7 +323,7 @@ header {
     z-index: 50;
 }
 
-header.scrolled {
+header.ed {
     border-radius: 0 0 1rem 1rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(4px);
@@ -883,7 +883,6 @@ nav {
     position: absolute;
     bottom: 10px;
     animation: bounce 2s infinite;
-    color: var(--accent-color);
     font-size: 2rem;
     cursor: pointer;
     z-index: 5;
