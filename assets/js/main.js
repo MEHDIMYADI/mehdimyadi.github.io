@@ -117,34 +117,6 @@ function setupMobileMenu() {
     });
 }
 
-// ---------------------- Footer Animation ----------------------
-function setupFooterAnimation() {
-    const footerLinks = document.querySelectorAll(".footer-right a");
-    const navContact = document.querySelector('a[data-section="footer"]');
-    let animationRemoved = false;
-
-    navContact.addEventListener("click", () => {
-        animationRemoved = false;
-        footerLinks.forEach(link => {
-            link.classList.remove("no-highlight", "highlight");
-            void link.offsetWidth;
-            link.classList.add("highlight");
-        });
-    });
-
-    footerLinks.forEach(link => {
-        link.addEventListener("mouseenter", () => {
-            if (!animationRemoved) {
-                footerLinks.forEach(l => {
-                    l.classList.remove("highlight");
-                    l.classList.add("no-highlight");
-                });
-                animationRemoved = true;
-            }
-        });
-    });
-}
-
 // ---------------------- Scroll Header ----------------------
 function setupScrollHeader() {
     window.addEventListener("scroll", () => {
@@ -190,7 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setupLangSwitch();
     setupThemeSwitch();
     setupMobileMenu();
-    setupFooterAnimation();
     setupScrollHeader();
     setupScrollDown();
 });
@@ -239,7 +210,7 @@ async function loadLanguage(lang) {
     document.getElementById("experience-title").textContent = data.experience.title;
 
     // Update nav links text
-    const navMap = ["home", "skills", "projects", "experience", "footer"];
+    const navMap = ["home", "skills", "projects", "experience"];
     document.querySelectorAll(".nav-link").forEach((el, i) => {
         el.textContent = data.nav[navMap[i]];
         console.log(data.nav[navMap[i]])
