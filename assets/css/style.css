@@ -1253,33 +1253,6 @@ footer {
     justify-content: flex-end;
 }
 
-@keyframes glow {
-    0%, 100% {
-        box-shadow: 0 0 5px 2px var(--accent-color);
-        color: var(--text-color);
-        transform: scale(1);
-    }
-    50% {
-        box-shadow: 0 0 15px 6px var(--accent-color);
-        color: #a3c9ff;
-        transform: scale(1.1);
-    }
-}
-
-.footer-right a.highlight {
-    animation: glow 2s infinite ease-in-out;
-    transition: color 0.3s ease;
-    color: var(--text-color);
-}
-
-.footer-right a.no-highlight {
-    animation: none !important;
-    color: var(--text-color);
-    transform: scale(1);
-    z-index: 20;
-    position: relative;
-}
-
 /* ==========================
    Footer links buttons (social)
 ========================== */
