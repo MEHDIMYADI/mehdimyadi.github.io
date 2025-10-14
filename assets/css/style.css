@@ -1305,3 +1305,56 @@ footer {
         flex: unset;
     }
 }
+
+/* ==========================
+   Landscape Mode (Mobile)
+========================== */
+@media (max-width: 900px) and (orientation: landscape) {
+    #hero {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+  
+    .hero-content {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+  
+    #hero-avatar {
+      width: 160px;
+      height: 160px;
+    }
+  
+    .loading-ring {
+      width: 160px;
+      height: 160px;
+    }
+  
+    #hero-title {
+      font-size: 1.6rem;
+    }
+  
+    #hero-subtitle {
+      font-size: 0.9rem;
+      max-width: 400px;
+      line-height: 1.4;
+      text-align: justify;
+    }
+  
+    .hero-layout {
+      flex-direction: row;
+      gap: 1rem;
+      margin-top: 0;
+    }
+  
+    .scroll-down {
+      display: none;
+    }
+}
