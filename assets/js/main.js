@@ -18,30 +18,12 @@ let isMenuOpen = false;
 
 // ---------------------- Loading Screen ----------------------
 function loadingScreen() {
-    const loadingScreen = document.getElementById('loadingScreen');
-
-    loadingScreen.style.display = 'flex';
-
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            loadingScreen.classList.add('hidden');
-
-            setTimeout(() => {
-                loadingScreen.remove();
-            }, 500);
-        }, 1500);
-    });
-
-    window.addEventListener('beforeunload', (event) => {
-        if (event.target.activeElement.href && event.target.activeElement.href.startsWith('mailto:')) {
-            return;
-        }
-
-        if (!event.defaultPrevented) {
-            document.body.prepend(loadingScreen);
-            loadingScreen.classList.remove('hidden');
-        }
-    });
+  window.addEventListener("load", () => {
+    const avatarContainer = document.getElementById("avatar-container");
+    if (avatarContainer) {
+      avatarContainer.classList.remove("loading");
+    }
+  });
 }
 
 // ---------------------- Language ----------------------
@@ -131,17 +113,30 @@ function setupScrollHeader() {
 
 // ---------------------- Scroll Down ----------------------
 function setupScrollDown() {
-    document.querySelector('.scroll-down').addEventListener('click', function(e) {
+    const scrollBtn = document.querySelector('.scroll-down');
+    let userScrolled = false;
+
+    window.addEventListener("wheel", () => userScrolled = true, { passive: true });
+    window.addEventListener("touchmove", () => userScrolled = true, { passive: true });
+
+    scrollBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        userScrolled = false;
+
         const target = document.querySelector('#skills-title');
         const headerOffset = document.querySelector('header').offsetHeight;
         const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - headerOffset;
 
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-        });
+        const smoothScroll = () => {
+            if (userScrolled) return;
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        };
+
+        smoothScroll();
     });
 }
 
