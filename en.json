@@ -6,8 +6,7 @@
 		"home": "Home",
 		"skills": "Skills",
 		"projects": "Projects",
-		"experience": "Experience",
-		"footer": "Contact"
+		"experience": "Experience"
 	},
 	"loading": {
 		"title": "Loading..."
