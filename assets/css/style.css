@@ -635,26 +635,26 @@ nav {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    animation: blurOverlay 10s linear infinite;
+    /*animation: blurOverlay 10s linear infinite;*/
 }
 
-@keyframes blurOverlay {
-    0%, 29% {
+/*@keyframes blurOverlay {
+    0%, 40% {
         backdrop-filter: blur(0);
         background: rgba(0, 0, 0, 0);
         opacity: 0;
     }
-    30%, 60% {
+    41%, 50% {
         backdrop-filter: blur(3px);
         background: rgba(0, 0, 0, 0.2);
         opacity: 1;
     }
-    70%, 100% {
+    60%, 100% {
         backdrop-filter: blur(0);
         background: rgba(0, 0, 0, 0);
         opacity: 0;
     }
-}
+}*/
 
 .flag-scene {
     position: relative;
