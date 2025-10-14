@@ -391,19 +391,16 @@ async function loadExperience() {
         const div = document.createElement("div");
         div.className = "experience-card";
         div.innerHTML = `
-    <h3>
-      ${item.role[currentLang]}
-    </h3>
-    <p>
-      ${item.company[currentLang]}
-    </p>
-    <p>
-      ${item.period[currentLang]}
-    </p>
-    <p>
-      ${item.details[currentLang]}
-    </p>
-  `;
+          <div class="experience-icon">
+            <i class="fas ${item.icon}"></i>
+          </div>
+          <div class="experience-text">
+            <h3>${item.role[currentLang]}</h3>
+            <p>${item.company[currentLang]}</p>
+            <p>${item.period[currentLang]}</p>
+            <p>${item.details[currentLang]}</p>
+          </div>
+        `;
         container.appendChild(div);
     });
 }
