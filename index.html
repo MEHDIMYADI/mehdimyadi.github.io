@@ -31,14 +31,6 @@
         </div>
     </noscript>
 
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen" style="display:none;">
-        <div class="ring">
-            <p id="loading-title"></p>
-            <span></span>
-        </div>
-    </div>
-
     <!-- Header -->
     <header>
         <nav>
@@ -64,9 +56,18 @@
     <!-- Hero -->
     <section id="hero">
         <div class="hero-content">
-            <img id="hero-avatar" alt="Mehdi Dimyadi Avatar" />
+            
+            <div id="avatar-container" class="avatar-wrapper loading">
+                <img id="hero-avatar" alt="Mehdi Dimyadi" />
+                <div class="loading-overlay">
+                  <div class="loading-ring"></div>
+                    <span></span>
+                    <p class="loading-text" id="loading-title"></p>
+                </div>
+            </div>
+            
             <h2 id="hero-title"></h2>
-
+            
             <div class="hero-layout">
                 <p id="hero-subtitle"></p>
                 <div class="mountain-flag">
