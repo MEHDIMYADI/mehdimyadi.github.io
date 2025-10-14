@@ -3,12 +3,27 @@
    ================================================== */
 
 // ---------------------- Set VH for mobile ----------------------
-function setVh() {
-    const vh = window.innerHeight * 0.01;
+let lastHeight = window.innerHeight;
+
+function setVh(height = lastHeight) {
+    const vh = height * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
-window.addEventListener('resize', setVh);
-window.addEventListener('load', setVh);
+
+function handleResize() {
+    if (Math.abs(window.innerHeight - lastHeight) > 150) {
+      lastHeight = window.innerHeight;
+      setVh();
+    }
+}
+
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', handleResize);
+  } else {
+    window.addEventListener('resize', handleResize);
+}
+
+window.addEventListener('load', () => setVh());
 setVh();
 
 // ---------------------- Global variables ----------------------
