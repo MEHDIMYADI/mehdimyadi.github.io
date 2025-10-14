@@ -8,6 +8,7 @@
 			"en": "Freelance / Personal Projects",
 			"fa": "فریلنس / پروژه‌های شخصی"
 		},
+        "icon": "fas fa-mobile-alt",
 		"period": {
 			"en": "2020 - Present",
 			"fa": "۱۳۹۹ - تاکنون"
@@ -22,6 +23,7 @@
 			"en": "Desktop Software Developer",
 			"fa": "توسعه‌دهنده نرم‌افزار دسکتاپ"
 		},
+        "icon": "fas fa-desktop",
 		"company": {
 			"en": "Independent / WinUI3 & .NET Projects",
 			"fa": "پروژه‌های مستقل / WinUI3 و دات‌نت"
@@ -40,6 +42,7 @@
 			"en": "Web Developer",
 			"fa": "توسعه‌دهنده وب"
 		},
+        "icon": "fas fa-globe",
 		"company": {
 			"en": "Freelance / Personal Websites",
 			"fa": "فریلنس / وب‌سایت‌های شخصی"
@@ -58,6 +61,7 @@
 			"en": "Arduino & Embedded Systems Developer",
 			"fa": "توسعه‌دهنده آردوینو و سیستم‌های تعبیه‌شده"
 		},
+        "icon": "fas fa-microchip",
 		"company": {
 			"en": "Hobby & Personal Projects",
 			"fa": "پروژه‌های سرگرمی و شخصی"
@@ -76,6 +80,7 @@
 			"en": "Excel & Office Automation Developer",
 			"fa": "توسعه‌دهنده افزونه و اتوماسیون Excel"
 		},
+        "icon": "fas fa-file-excel",
 		"company": {
 			"en": "Independent Projects",
 			"fa": "پروژه‌های مستقل"
@@ -94,6 +99,7 @@
 			"en": "Software Enthusiast & Early Experience",
 			"fa": "علاقه‌مند به نرم‌افزار و تجربه‌های اولیه"
 		},
+        "icon": "fas fa-lightbulb",
 		"company": {
 			"en": "Personal Exploration",
 			"fa": "کاوش شخصی"
