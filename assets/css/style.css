@@ -30,6 +30,9 @@
     --overlay-bg: rgba(0, 0, 0, 0.2);
     --overlay-text: #ffffff;
     --flag-bg: rgba(25, 50, 80, 0.5);
+    --avatar-border: #60a5fa;
+    --avatar-glow: rgba(96, 165, 250, 0.8);
+    --avatar-glow-alt: rgba(96, 180, 255, 0.6);
     --vh: 1vh;
 }
 
@@ -47,11 +50,11 @@ body.light {
     --shadow-color: rgba(2, 132, 199, 0.15);
     --header-bg: rgba(255, 255, 255, 0.8);
     --hero-gradient: linear-gradient(135deg,
-            #e0f2fe 0%,
-            #bae6fd 25%,
-            #7dd3fc 50%,
-            #38bdf8 75%,
-            #e0f2fe 100%);
+            #c0e0f8 0%,
+            #9acdf5 25%,
+            #63b3f0 50%,
+            #38a1e5 75%,
+            #c0e0f8 100%);
     --mountain-color: #95a5a6;
     --mountain-shadow: rgba(0, 0, 0, 0.1);
     --cloud-color: #f0f4f8;
@@ -61,6 +64,9 @@ body.light {
     --overlay-bg: rgba(255, 255, 255, 0.2);
     --overlay-text: #1e293b;
     --flag-bg: rgba(100, 160, 220, 0.4);
+    --avatar-border: #0ea5e9;
+    --avatar-glow: rgba(14, 165, 233, 0.5);
+    --avatar-glow-alt: rgba(30, 180, 250, 0.35);
 }
 
 /* ==========================
@@ -330,7 +336,7 @@ nav {
     flex-wrap: wrap;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 1rem 1.5rem;
+    padding: .5rem 1rem;
     height: 100%;
     position: relative;
     line-height: 1.5;
@@ -376,7 +382,7 @@ nav {
 
 #navMenu {
     display: flex;
-    gap: 1.5rem;
+    gap: .5rem;
 }
 
 #menuToggle {
@@ -400,33 +406,31 @@ nav {
 
     #navMenu {
         display: none;
-        flex-direction: column;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        width: 100%;
-        background-color: var(--card-bg);
-        backdrop-filter: blur(12px);
+        position: absolute;
+        top: 100%;
+        right: 10px;
+        left: 10px;
+        margin-top: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        width: auto;
+        background-color: var(--header-bg);
         border-top: 1px solid var(--card-border);
-        padding: 0;
+        padding: 1rem 0 1rem 1rem;
         z-index: 100;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        max-height: 0;
         overflow: hidden;
+        border-radius: 12px;
         transition: all 0.3s ease-in-out;
     }
 
     #navMenu.active {
-        display: block;
+        display: flex;
         max-height: 400px;
-        padding: 1rem 0;
     }
 
     .nav-link {
-        padding: 1rem 1.5rem;
+        display: flex;
         text-align: center;
-        border-bottom: 1px solid var(--card-border);
         margin: 0;
         font-size: 1.1rem;
         transition: all 0.3s ease;
@@ -480,6 +484,17 @@ nav {
 }
 .mountain-flag div, .mountain-flag div::after, .mountain-flag div::before {
     position: absolute;
+}
+
+.mountain-flag:hover .overlay {
+    animation: none;
+    opacity: 1;
+    backdrop-filter: blur(3px);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.mountain-flag:hover #climber-quote {
+    transform: scale(1.10);
 }
 
 .mountain {
@@ -738,20 +753,6 @@ nav {
         opacity: 0;
     }
 }
-@keyframes textShow {
-    0%, 29% {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    35%, 55% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    65%, 100% {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-}
 
 .flag-scene {
     position: relative;
@@ -780,6 +781,11 @@ nav {
 
 .dash {
     background: var(--dash-color);
+}
+
+#climber-quote {
+    white-space: pre-line;
+    transition: transform 2s ease, box-shadow 1s ease;
 }
 
 @media (max-width: 768px) {
@@ -821,14 +827,32 @@ nav {
     width: 300px;
     height: 300px;
     border-radius: 50%;
-    border: 4px solid var(--accent-color);
-    box-shadow: 0 0 25px var(--shadow-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 4px solid var(--avatar-border);
+    box-shadow: 0 0 15px var(--avatar-glow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    animation: neonPulse 2.5s ease-in-out infinite alternate;
 }
 
 #hero-avatar:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px var(--accent-color);
+    box-shadow: 0 0 40px var(--avatar-glow), 0 0 60px var(--avatar-glow-alt);
+    border-color: var(--avatar-border);
+    animation: none;
+}
+
+@keyframes neonPulse {
+    0% {
+        box-shadow: 0 0 10px var(--avatar-glow), 0 0 20px var(--avatar-glow-alt);
+        border-color: var(--avatar-border);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--avatar-glow), 0 0 30px var(--avatar-glow-alt);
+        border-color: var(--avatar-border);
+    }
+    100% {
+        box-shadow: 0 0 10px var(--avatar-glow), 0 0 20px var(--avatar-glow-alt);
+        border-color: var(--avatar-border);
+    }
 }
 
 #hero-title {
@@ -937,20 +961,6 @@ nav {
     border-color: rgba(147, 197, 253, 0.5);
 }
 
-#experience {
-    padding-bottom: 3rem;
-}
-
-.experience-card:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 20px var(--shadow-color);
-    transform: scale(1.02);
-}
-
-.experience-card p {
-    text-align: justify;
-}
-
 .skill-card {
     align-items: center;
     text-align: center;
@@ -963,6 +973,60 @@ nav {
     font-weight: 600;
 }
 
+.experience-card {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    align-items: center;
+    padding: 0rem;
+}
+
+#experience {
+    padding-bottom: 3rem;
+}
+
+.experience-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0)
+  );
+  box-shadow: inset -4px 0 8px rgba(0, 0, 0, 0.2);   
+}
+
+.experience-icon i {
+  font-size: 2.2rem;
+  color: var(--accent-color);
+  transition: transform 0.3s ease;
+}
+
+.experience-card:hover .experience-icon i {
+  transform: scale(1.15);
+}
+
+.experience-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px var(--shadow-color);
+    transform: scale(1.02);
+}
+
+.experience-text {
+  width: auto;
+  height: 100%;
+  padding: 1rem .5rem 0rem .5rem;
+}
+
+.experience-text h3 {
+  margin-bottom: 0.3rem;
+}
+
+.experience-text p {
+  text-align: justify;
+}
 /* ==========================
    Section H2 Title
 ========================== */
@@ -1156,6 +1220,8 @@ footer {
     text-align: center;
     padding: 1.5rem 1rem;
     user-select: none;
+    border-radius: 1rem 1rem 0 0;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .footer-container {
