@@ -6,11 +6,14 @@
 		"home": "Home",
 		"skills": "Skills",
 		"projects": "Projects",
-		"experience": "Experience",
-		"footer": "Contact"
-	},
+		"experience": "Experience"
+    },
 	"loading": {
-		"title": "Loading..."
+		"title": "Loading...",
+        "skills": "Loading Skills...",
+        "projects": "Loading Projects...",
+        "experience": "Loading Experience...",
+        "ready": "Ready!"
 	},
 	"hero": {
 		"title": "Mehdi Dimyadi",
