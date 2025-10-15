@@ -209,6 +209,7 @@ function setupScrollDown() {
 
 // ---------------------- DOMContentLoaded ----------------------
 document.addEventListener("DOMContentLoaded", () => {
+    injectSEOData();
     applyTheme(currentTheme);
     updateLangSwitchText();
 
@@ -388,6 +389,43 @@ async function loadExperience() {
         `;
         container.appendChild(div);
     });
+}
+
+// -------------------------------
+// Load SEO Data
+// -------------------------------
+async function injectSEOData() {
+  try {
+    const res = await fetch('../../data/seo.json');
+    if (!res.ok) throw new Error('SEO JSON could not be loaded');
+    const seo = await res.json();
+
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(s => s.remove());
+    document.querySelectorAll('meta[name="description"]').forEach(m => m.remove());
+
+    ['fa', 'en'].forEach(lang => {
+      const data = seo[lang];
+      if (!data) return;
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify(data, null, 2);
+      document.head.appendChild(script);
+
+      if (lang === (navigator.language.startsWith('fa') ? 'fa' : 'en')) {
+        const meta = document.createElement('meta');
+        meta.name = 'description';
+        meta.content = data['@graph']?.[1]?.description || '';
+        document.head.appendChild(meta);
+      }
+    });
+
+    console.log('✅ SEO injected: JSON-LD (fa + en) + meta description');
+    //Does your page support rich results?
+    //https://search.google.com/test/rich-results             
+  } catch (err) {
+    console.error('⚠️ injectSEOData Error:', err);
+  }
 }
 
 // -------------------------------
