@@ -217,7 +217,7 @@ header {
     z-index: 50;
 }
 
-header.ed {
+header.scrolled {
     border-radius: 0 0 1rem 1rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(4px);
