@@ -1,0 +1,92 @@
+{
+  "fa": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "مهدی دیمیادی",
+        "url": "https://github.com/MEHDIMYADI",
+        "sameAs": [
+          "https://github.com/MEHDIMYADI",
+          "https://www.linkedin.com/in/mehdimyadi/"
+        ],
+        "jobTitle": "توسعه‌دهنده موبایل، دسکتاپ و وب",
+        "description": "توسعه‌دهنده با تجربه در پروژه‌های Flutter، WinUI3، C# و Arduino."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "مهدی دیمیادی - پرتفولیو توسعه‌دهنده",
+        "headline": "مهدی دیمیادی - پرتفولیو توسعه‌دهنده",
+        "description": "مهدی دیمیادی، توسعه‌دهنده موبایل، دسکتاپ و وب با تجربه در پروژه‌های Flutter، WinUI3، C# و Arduino. مشاهده نمونه کارها و مهارت‌ها.",
+        "inLanguage": "fa-IR",
+        "applicationCategory": "Software",
+        "operatingSystem": "Windows, macOS, Linux, Android, iOS",
+        "softwareVersion": "1.0",
+        "image": "https://placehold.co/128x128/0F52BA/FFF?text=Mehdi%20Dimyadi",
+        "author": {
+          "@type": "Person",
+          "name": "مهدی دیمیادی"
+        },
+        "downloadUrl": "",
+        "url": "https://github.com/MEHDIMYADI",
+        "datePublished": "2025-10-15",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "url": "https://github.com/MEHDIMYADI"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "120"
+        }
+      }
+    ]
+  },
+  "en": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Mehdi Dimyadi",
+        "url": "https://github.com/MEHDIMYADI",
+        "sameAs": [
+          "https://github.com/MEHDIMYADI",
+          "https://www.linkedin.com/in/mehdimyadi/"
+        ],
+        "jobTitle": "Mobile, Desktop, and Web Developer",
+        "description": "Developer experienced in Flutter, WinUI3, C#, and Arduino projects."
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "Mehdi Dimyadi - Developer Portfolio",
+        "headline": "Mehdi Dimyadi - Developer Portfolio",
+        "description": "Mehdi Dimyadi, mobile, desktop, and web developer with experience in Flutter, WinUI3, C#, and Arduino projects. Explore skills and portfolio.",
+        "inLanguage": "en-US",
+        "applicationCategory": "Software",
+        "operatingSystem": "Windows, macOS, Linux, Android, iOS",
+        "softwareVersion": "1.0",
+        "image": "https://placehold.co/128x128/0F52BA/FFF?text=Mehdi%20Dimyadi",
+        "author": {
+          "@type": "Person",
+          "name": "Mehdi Dimyadi"
+        },
+        "downloadUrl": "",
+        "url": "https://github.com/MEHDIMYADI",
+        "datePublished": "2025-10-15",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "url": "https://github.com/MEHDIMYADI"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "120"
+        }
+      }
+    ]
+  }
+}
