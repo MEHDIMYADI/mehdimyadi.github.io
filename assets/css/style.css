@@ -358,6 +358,7 @@ nav {
         display: none !important;
     }
 }
+
 /* ==========================
    Mountain Flag Section
 ========================== */
@@ -713,6 +714,8 @@ nav {
     background: var(--hero-gradient);
     position: relative;
     padding-inline: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
 }
 
 .hero-content {
