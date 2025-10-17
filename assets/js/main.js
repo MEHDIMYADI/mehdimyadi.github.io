@@ -219,7 +219,10 @@ async function loadAllComponents() {
 
 	if (document.getElementById('header')) 
 		components.push({ id: 'header', url: '../../components/header.html' });
-	
+
+	if (document.getElementById('heroComp')) 
+		components.push({ id: 'heroComp', url: '../../components/hero.html' });
+
 	if (document.getElementById('footer')) 
 		components.push({ id: 'footer', url: '../../components/footer.html' });
 	
