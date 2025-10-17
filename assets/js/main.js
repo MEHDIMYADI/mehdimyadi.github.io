@@ -106,14 +106,18 @@ function setupLangSwitch() {
         localStorage.setItem("lang", currentLang);
         updateLangSwitchText();
 
-        // Loading Language
+        // Load language data
         const data = await loadLanguage(currentLang);
+
+		// Update texts and UI
         updateTextContent(data);
-        
+
+		// Reload sections
         loadSkills();
         loadProjects();
         loadExperience();
 
+		// Show final ready step in loading screen
         loadingScreen(data, [{ text: data.loading.ready, func: null }]);
     });
 }
@@ -268,17 +272,20 @@ async function loadFooterLinks(lang, section = 'main') {
 document.addEventListener("DOMContentLoaded", async () => {
     const data = await loadLanguage(currentLang);
     await loadAllComponents();
-    updateLangSwitchText();
-    await loadHero(data);
 
-    // Setup rest of UI
-    updateTextContent(data);
+	// UI before loading main content
+    applyTheme(currentTheme);
+    updateLangSwitchText();
     setupLangSwitch();
     setupThemeSwitch();
     setupMobileMenu();
     setupScrollHeader();
     setupScrollDown();
     setupNavLinks();
+
+    // Load the main content
+    await loadHero(data);
+    updateTextContent(data);
     
     const steps = [
         { text: data.loading.title, func: null },
