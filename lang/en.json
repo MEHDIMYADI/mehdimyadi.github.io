@@ -30,6 +30,11 @@
 		"title": "Experience"
 	},
 	"footer": {
+        "about": "About",
+        "links": "Links",    
+        "contact": "Contact",
+        "call": "Call me at your earliest convenience",
+        "address": "Iran",
         "dimyadi": "Dimyadi – derived from 'Dimyad', meaning generosity, nobility, and detachment from worldly possessions"
 	}
 }
