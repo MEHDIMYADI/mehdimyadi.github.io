@@ -263,7 +263,7 @@ async function loadFooterLinks(lang, section = 'main') {
 // ---------------------- DOMContentLoaded ----------------------
 document.addEventListener("DOMContentLoaded", () => {
     injectSEOData();
-	loadAllComponents();
+	await loadAllComponents();
     applyTheme(currentTheme);
     updateLangSwitchText();
 
