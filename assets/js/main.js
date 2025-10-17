@@ -91,8 +91,14 @@ function updateTextContent(data) {
         el.textContent = data.nav[navMap[i]];
     });
 
+    document.getElementById("about-title").textContent = data.footer.about;
+    document.getElementById("links-title").textContent = data.footer.links;
+    document.getElementById("contact-title").textContent = data.footer.contact;    
+    document.getElementById("call-title").textContent = data.footer.call;        
+    document.getElementById("address-title").textContent = data.footer.address;    
     document.getElementById("dimyadi-title").textContent = data.footer.dimyadi;
     copyright(currentLang);
+    loadFooterLinks(currentLang, 'main');
 }
 
 function setupLangSwitch() {
@@ -207,9 +213,57 @@ function setupScrollDown() {
     });
 }
 
+// ---------------------- load Components ----------------------
+async function loadAllComponents() {
+	const components = [];
+
+	if (document.getElementById('footer')) 
+		components.push({ id: 'footer', url: '../../components/footer.html' });
+	
+	for (const c of components) {
+		await loadComponent(c.id, c.url);
+    }
+}
+
+function loadComponent(id, url) {
+    return fetch(url)
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById(id).innerHTML = html;
+        });
+}
+
+// ---------------------- load Footer Links ----------------------
+async function loadFooterLinks(lang, section = 'main') {
+    try {
+        const res = await fetch('../../data/footer.json');
+        const data = await res.json();
+        const links = data.links[section];
+
+        const ul = document.getElementById('footer-links');
+        if (!ul || !links) return;
+
+        ul.innerHTML = '';
+
+        links.forEach(link => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = link.href;
+            a.textContent = link.text[lang] || link.text['en'];
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            li.appendChild(a);
+            ul.appendChild(li);
+        });
+    } catch (err) {
+        console.error('Error loading footer links:', err);
+    }
+}
+
 // ---------------------- DOMContentLoaded ----------------------
 document.addEventListener("DOMContentLoaded", () => {
     injectSEOData();
+	loadAllComponents();
     applyTheme(currentTheme);
     updateLangSwitchText();
 
@@ -218,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Start loading screen
         loadingScreen(data);
-
+		
         // Load main content
         loadHero();
         loadSkills();
