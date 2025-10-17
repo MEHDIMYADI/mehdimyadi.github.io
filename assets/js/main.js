@@ -32,39 +32,35 @@ let currentTheme = localStorage.getItem("theme") || "dark";
 let isMenuOpen = false;
 
 // ---------------------- Loading Screen ----------------------
-function loadingScreen(data, step = null) {
+async function loadingScreen(data, stepFuncPairs) {
     const avatarContainer = document.getElementById("avatar-container");
-    const loadingTitle = document.getElementById("loading-title");
-
     if (!avatarContainer) return;
 
-    const steps = [
-        data.loading.title,
-        data.loading.skills,
-        data.loading.projects,
-        data.loading.experience,
-        data.loading.ready
-    ];
-    
-    if (step !== null && step >= 0 && step < steps.length) {
-        avatarContainer.classList.add("loading");
-        loadingTitle.textContent = steps[step];
-                setTimeout(() => {
-            avatarContainer.classList.remove("loading");
-        }, 500);
-        return;
+    const loadingTitle = document.getElementById("loading-title");
+    if (!loadingTitle) return;
+
+    avatarContainer.classList.add("loading");
+
+    for (const step of stepFuncPairs) {
+        const stepWeight = step.weight || 1;
+
+        // Fade out text
+        loadingTitle.style.opacity = 0;
+        await new Promise(r => setTimeout(r, 100));
+
+        // Update text
+        loadingTitle.textContent = step.text;
+
+        // Fade in text
+        loadingTitle.style.opacity = 1;
+        await new Promise(r => setTimeout(r, 100));
+
+        // Run actual loading function if exists
+        if (step.func) await step.func();
     }
-    
-    let index = 0;
-    const interval = setInterval(() => {
-        if (index >= steps.length) {
-            clearInterval(interval);
-            avatarContainer.classList.remove("loading");
-            return;
-        }
-        loadingTitle.textContent = steps[index];
-        index++;
-    }, 500);
+
+    // Final ready state with checkmark
+    avatarContainer.classList.remove("loading");
 }
 
 // ---------------------- Language ----------------------
@@ -105,18 +101,20 @@ function setupLangSwitch() {
     const btn = document.getElementById("langSwitch");
     if (!btn) return;
 
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", async () => {
         currentLang = currentLang === "fa" ? "en" : "fa";
         localStorage.setItem("lang", currentLang);
         updateLangSwitchText();
 
-        loadLanguage(currentLang).then(data => {
-            updateTextContent(data);  // update static titles, nav, etc.
-            loadSkills();             // reload skills in new language
-            loadProjects();           // reload projects in new language
-            loadExperience();         // reload experience in new language
-            loadingScreen(data, 4);   // loading screen in new language
-        });
+        // Loading Language
+        const data = await loadLanguage(currentLang);
+        updateTextContent(data);
+        
+        loadSkills();
+        loadProjects();
+        loadExperience();
+
+        loadingScreen(data, [{ text: data.loading.ready, func: null }]);
     });
 }
 
@@ -268,42 +266,44 @@ async function loadFooterLinks(lang, section = 'main') {
 
 // ---------------------- DOMContentLoaded ----------------------
 document.addEventListener("DOMContentLoaded", async () => {
-    injectSEOData();
-	await loadAllComponents();
-    applyTheme(currentTheme);
+    const data = await loadLanguage(currentLang);
+    await loadAllComponents();
     updateLangSwitchText();
+    await loadHero(data);
 
-    loadLanguage(currentLang).then(data => {
-        updateTextContent(data);
-
-        // Start loading screen
-        loadingScreen(data);
-		
-        // Load main content
-        loadHero();
-        loadSkills();
-        loadProjects();
-        loadExperience();
-    });
-
-    // Setup UI interactions
+    // Setup rest of UI
+    updateTextContent(data);
     setupLangSwitch();
     setupThemeSwitch();
     setupMobileMenu();
     setupScrollHeader();
     setupScrollDown();
     setupNavLinks();
+    
+    const steps = [
+        { text: data.loading.title, func: null },
+        { text: data.loading.skills, func: loadSkills },
+        { text: data.loading.projects, func: loadProjects },
+        { text: data.loading.experience, func: loadExperience },
+        { text: data.loading.ready, func: null }
+    ];
+
+    await loadingScreen(data, steps);
 });
+
 
 // -------------------------------
 // Load Hero Section (GitHub Avatar)
 // -------------------------------
-async function loadHero() {
+async function loadHero(data) {
     try {
         const res = await fetch("https://api.github.com/users/mehdimyadi");
-        const data = await res.json();
+        const json = await res.json();
         const avatar = document.getElementById("hero-avatar");
-        if (avatar) avatar.src = data.avatar_url;
+        if (avatar) {
+            avatar.alt = data.hero.title
+            avatar.src = json.avatar_url;
+        }
     } catch (error) {
         console.error("GitHub avatar could not be loaded:", error);
     }
