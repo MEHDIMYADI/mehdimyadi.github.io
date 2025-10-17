@@ -264,7 +264,7 @@ async function loadFooterLinks(lang, section = 'main') {
 }
 
 // ---------------------- DOMContentLoaded ----------------------
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     injectSEOData();
 	await loadAllComponents();
     applyTheme(currentTheme);
