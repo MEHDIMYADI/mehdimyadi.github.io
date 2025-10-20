@@ -220,9 +220,15 @@ function setupScrollDown() {
 async function loadAllComponents() {
 	const components = [];
 
-	if (document.getElementById('header')) 
+	if (document.getElementById('header')) {
 		components.push({ id: 'header', url: '../../components/header.html' });
-
+		
+	    updateLangSwitchText();
+        setupLangSwitch();
+        setupThemeSwitch();
+        setupMobileMenu();
+	}
+		
 	if (document.getElementById('heroComp')) 
 		components.push({ id: 'heroComp', url: '../../components/hero.html' });
 
@@ -271,15 +277,12 @@ async function loadFooterLinks(lang, section = 'main') {
 
 // ---------------------- DOMContentLoaded ----------------------
 document.addEventListener("DOMContentLoaded", async () => {
-    const data = await loadLanguage(currentLang);
-    await loadAllComponents();
+	applyTheme(currentTheme);
+	
+	const data = await loadLanguage(currentLang);
+	await loadAllComponents();
 
 	// UI before loading main content
-    applyTheme(currentTheme);
-    updateLangSwitchText();
-    setupLangSwitch();
-    setupThemeSwitch();
-    setupMobileMenu();
     setupScrollHeader();
     setupScrollDown();
     setupNavLinks();
