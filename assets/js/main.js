@@ -136,21 +136,22 @@ function applyTheme(theme) {
     localStorage.setItem("theme", theme);
 }
 
+function updateThemeIcon() {
+    const icon = document.getElementById("themeIcon");
+    if (!icon) return;
+    icon.className = currentTheme === "dark" ? "fas fa-moon" : "fas fa-sun";
+}
+
 function setupThemeSwitch() {
     const btn = document.getElementById("themeSwitch");
     if (!btn) return;
 
-	const icon = document.getElementById("themeIcon");
+    updateThemeIcon();
 
-    if (currentTheme === "dark") {
-        if (icon) icon.className = "fas fa-moon";
-    } else {
-        if (icon) icon.className = "fas fa-sun";
-	}
-	
     btn.addEventListener("click", () => {
         currentTheme = currentTheme === "dark" ? "light" : "dark";
         applyTheme(currentTheme);
+        updateThemeIcon();
     });
 }
 
