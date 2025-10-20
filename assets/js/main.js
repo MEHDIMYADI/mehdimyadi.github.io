@@ -126,14 +126,11 @@ function setupLangSwitch() {
 // ---------------------- Theme ----------------------
 function applyTheme(theme) {
     const body = document.body;
-    const icon = document.getElementById("themeIcon");
 
     if (theme === "dark") {
         body.classList.remove("light");
-        if (icon) icon.className = "fas fa-moon";
     } else {
         body.classList.add("light");
-        if (icon) icon.className = "fas fa-sun";
     }
 
     localStorage.setItem("theme", theme);
@@ -143,6 +140,14 @@ function setupThemeSwitch() {
     const btn = document.getElementById("themeSwitch");
     if (!btn) return;
 
+	const icon = document.getElementById("themeIcon");
+
+    if (currentTheme === "dark") {
+        if (icon) icon.className = "fas fa-moon";
+    } else {
+        if (icon) icon.className = "fas fa-sun";
+	}
+	
     btn.addEventListener("click", () => {
         currentTheme = currentTheme === "dark" ? "light" : "dark";
         applyTheme(currentTheme);
