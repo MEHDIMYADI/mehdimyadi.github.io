@@ -90,6 +90,7 @@ function updateTextContent(data) {
     document.getElementById("about-title").textContent = data.footer.about;
     document.getElementById("links-title").textContent = data.footer.links;
     document.getElementById("contact-title").textContent = data.footer.contact;    
+	document.getElementById("support-email").textContent = data.footer.support;        
     document.getElementById("call-title").textContent = data.footer.call;        
     document.getElementById("address-title").textContent = data.footer.address;    
     document.getElementById("dimyadi-title").textContent = data.footer.dimyadi;
