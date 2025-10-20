@@ -227,6 +227,29 @@
 	},
 	{
 		"name": {
+			"en": "Progressive Web App (PWA) Site",
+			"fa": "وب‌سایت Progressive Web App (PWA)"
+		},
+		"description": {
+			"en": "Progressive Web Apps built with modern web technologies (HTML/CSS/JS). Includes manifest, service worker, offline support and deployment instructions for GitHub Pages.",
+			"fa": "برنامه‌های وب پیش‌رونده ساخته‌شده با HTML/CSS/JS و مجهز به manifest و service worker برای پشتیبانی آفلاین؛ شامل راهنمای استقرار روی GitHub Pages."
+		},
+		"links": [
+			{
+				"url": "https://dimyadi.ir/roozegaar-calendar",
+				"tooltip": {
+					"en": "Live Demo",
+					"fa": "نسخه آزمایشی"
+				},
+				"icon": "fa-solid fa-globe"
+			}
+		],
+		"images": [
+			"https://placehold.co/800x500/0F172A/FFF?text=Roozegaar+Calendar+PWA"
+		]
+	},
+	{
+		"name": {
 			"en": "Static Portfolio Website",
 			"fa": "وب‌سایت استاتیک پرتفولیو"
 		},
