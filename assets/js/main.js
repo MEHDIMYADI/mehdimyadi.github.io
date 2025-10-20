@@ -220,14 +220,8 @@ function setupScrollDown() {
 async function loadAllComponents() {
 	const components = [];
 
-	if (document.getElementById('header')) {
+	if (document.getElementById('header'))
 		components.push({ id: 'header', url: '../../components/header.html' });
-		
-	    updateLangSwitchText();
-        setupLangSwitch();
-        setupThemeSwitch();
-        setupMobileMenu();
-	}
 		
 	if (document.getElementById('heroComp')) 
 		components.push({ id: 'heroComp', url: '../../components/hero.html' });
@@ -237,6 +231,14 @@ async function loadAllComponents() {
 	
 	for (const c of components) {
 		await loadComponent(c.id, c.url);
+
+		// Call setup functions after the component has loaded
+		if (c.id === 'header') {
+			updateLangSwitchText();
+			setupLangSwitch();
+			setupThemeSwitch();
+			setupMobileMenu();
+		}
     }
 }
 
