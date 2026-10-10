@@ -1,0 +1,292 @@
+/* ==================================================
+               Mehdi Dimyadi Portfolio
+   ================================================== */
+   
+.saadi-medallion {
+    --T: 24s;
+    --ink: #fff3d3;
+    --ink-cool: #d3dcff;
+    position: relative;
+    margin: 0 auto;
+    width: 240px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    container-type: inline-size;
+    background: #070a26;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, .05), 0 14px 40px rgba(2, 6, 30, .55), 0 0 28px var(--avatar-glow-alt);
+    z-index: 10;
+    isolation: isolate;
+    transition: transform .4s cubic-bezier(.2, .8, .2, 1), box-shadow .4s;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.saadi-medallion:hover,
+.saadi-medallion:focus-visible {
+    transform: scale(1.04);
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, .08), 0 18px 46px rgba(2, 6, 30, .6), 0 0 38px var(--avatar-glow);
+    outline: none;
+}
+.saadi-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+/* Gently dimming the background behind the text so the poem remains legible */
+.saadi-scrim {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(closest-side at 50% 54%, rgba(4, 7, 28, .62), rgba(4, 7, 28, .28) 62%, transparent 100%);
+    pointer-events: none;
+}
+
+/* ---------- Poem Text ---------- */
+.poem-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .15em;
+    padding: 8cqw 9cqw 4cqw;
+    text-align: center;
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    font-weight: 500;
+    line-height: 1.55;
+    color: var(--ink);
+    text-shadow: 0 1px 10px rgba(3, 5, 24, .95), 0 0 3px rgba(3, 5, 24, .9);
+    pointer-events: none;
+    white-space: normal;
+}
+.poem-text .pl {
+    display: block;
+    font-size: 8.4cqw;
+}
+/* The first two lines are shifted slightly to the left so they do not overlap with the peak marker */
+.poem-text .pl-1,
+.poem-text .pl-2 { translate: -6cqw 0; }
+.poem-text .pl-3,
+.poem-text .pl-4 { color: var(--ink-cool); }
+.poem-text .pl-4 { font-weight: 700; }
+.poem-text .pa {
+    display: block;
+    margin-top: .5em;
+    font-size: 5.6cqw;
+    font-weight: 400;
+    opacity: .85;
+    color: #ffd9a0;
+}
+[lang="en"] .poem-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.4;
+}
+[lang="en"] .poem-text .pl { font-size: 5.9cqw; }
+[lang="en"] .poem-text .pa { font-size: 4.6cqw; font-style: normal; letter-spacing: .08em; }
+
+/* ============ Animation (only when movement is allowed) ============ */
+@media (prefers-reduced-motion: no-preference) {
+
+    .saadi-medallion .pl,
+    .saadi-medallion .pa {
+        opacity: 0;
+        animation-duration: var(--T);
+        animation-iteration-count: infinite;
+        animation-timing-function: cubic-bezier(.3, .7, .3, 1);
+    }
+    .pl-1 { animation-name: pl1; }
+    .pl-2 { animation-name: pl2; }
+    .pl-3 { animation-name: pl3; }
+    .pl-4 { animation-name: pl4; }
+    .pa   { animation-name: pa; }
+
+/* "Ink-like" entry: Faded and slightly lowered → Sharp/Clear (ensure no spacing breaks the Persian characters) */
+    @keyframes pl1 {
+        0%, 8%   { opacity: 0; filter: blur(7px); transform: translateY(10px) scale(.97); }
+        13%, 46% { opacity: 1; filter: blur(0);   transform: none; }
+        50%,100% { opacity: 0; filter: blur(5px); transform: translateY(-6px); }
+    }
+    @keyframes pl2 {
+        0%, 16%  { opacity: 0; filter: blur(7px); transform: translateY(10px) scale(.97); }
+        21%, 46% { opacity: 1; filter: blur(0);   transform: none; }
+        50%,100% { opacity: 0; filter: blur(5px); transform: translateY(-6px); }
+    }
+    @keyframes pl3 {
+        0%, 57%  { opacity: 0; filter: blur(7px); transform: translateY(10px) scale(.97); }
+        62%, 91% { opacity: 1; filter: blur(0);   transform: none; }
+        96%,100% { opacity: 0; filter: blur(6px); transform: translateY(8px); }
+    }
+    @keyframes pl4 {
+        0%, 66%  { opacity: 0; filter: blur(9px); transform: translateY(12px) scale(.96); }
+        72%, 91% { opacity: 1; filter: blur(0);   transform: none; }
+        96%,100% { opacity: 0; filter: blur(6px); transform: translateY(8px); }
+    }
+    @keyframes pa {
+        0%, 76%  { opacity: 0; }
+        82%, 91% { opacity: .85; }
+        96%,100% { opacity: 0; }
+    }
+
+    .saadi-medallion .saadi-scrim { animation: scrim var(--T) ease-in-out infinite; }
+    @keyframes scrim {
+        0%, 6%   { opacity: 0; }
+        12%, 48% { opacity: 1; }
+        52%, 56% { opacity: .2; }
+        62%, 92% { opacity: 1; }
+        98%,100% { opacity: 0; }
+    }
+
+/* ---- Sky: Stars, Moon, Dawn ---- */
+    .stars { animation: starsDim var(--T) ease-in-out infinite; }
+    @keyframes starsDim {
+        0%, 8%   { opacity: 1; }
+        26%, 48% { opacity: .3; }
+        62%, 100% { opacity: 1; }
+    }
+    .star {
+        fill: #fff;
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: twinkle var(--sp, 3.4s) ease-in-out var(--sd, 0s) infinite;
+    }
+    @keyframes twinkle {
+        0%, 100% { opacity: .25; transform: scale(.7); }
+        50%      { opacity: 1;   transform: scale(1.35); }
+    }
+    .moon { animation: moonFade var(--T) ease-in-out infinite; }
+    @keyframes moonFade {
+        0%, 8%   { opacity: .95; }
+        26%, 48% { opacity: .35; }
+        62%, 100% { opacity: .95; }
+    }
+    .dawn { opacity: 0; animation: dawn var(--T) ease-in-out infinite; }
+    @keyframes dawn {
+        0%, 8%   { opacity: 0; }
+        26%, 47% { opacity: 1; }
+        60%, 100% { opacity: 0; }
+    }
+    .rim { opacity: 0; animation: dawn var(--T) ease-in-out infinite; }
+
+/* ---- The Path: The light emanating from the guide's hand ---- */
+    .trail-glow, .trail-line {
+        stroke-dashoffset: 100;
+        animation: trail var(--T) cubic-bezier(.45, .05, .35, 1) infinite;
+    }
+    .trail-glow { stroke-dasharray: 100 100; }
+    .trail-line { stroke-dasharray: 1.1 2.4; opacity: 0; animation-name: trailDots; }
+    @keyframes trail {
+        0%, 9%   { stroke-dashoffset: 100; opacity: 0; }
+        10%      { opacity: 1; }
+        30%, 50% { stroke-dashoffset: 0; opacity: 1; }
+        62%, 100% { stroke-dashoffset: -100; opacity: 0; }
+    }
+    @keyframes trailDots {
+        0%, 11%  { opacity: 0; }
+        30%, 50% { opacity: 1; }
+        60%, 100% { opacity: 0; }
+    }
+
+/* ---- Guide: The hand reaches out, the hand drops ---- */
+    .arm {
+        transform-origin: 150px 52.6px;
+        animation: arm var(--T) cubic-bezier(.5, 0, .3, 1) infinite;
+    }
+    @keyframes arm {
+        0%, 6%    { transform: rotate(-60deg); }
+        11%, 50%  { transform: rotate(0deg); }
+        58%, 100% { transform: rotate(-60deg); }
+    }
+    .lantern { animation: lantern var(--T) ease-in-out infinite; }
+    @keyframes lantern {
+        0%, 7%    { opacity: .0; }
+        12%, 50%  { opacity: 1; }
+        58%, 100% { opacity: 0; }
+    }
+    .lantern-glow {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: pulse 2.6s ease-in-out infinite;
+    }
+    @keyframes pulse { 50% { transform: scale(1.35); } }
+
+/* ---- Flag on the Summit ---- */
+    .flag .pole {
+        transform-box: fill-box;
+        transform-origin: bottom;
+        animation: pole var(--T) ease-in-out infinite;
+    }
+    .flag .cloth {
+        transform-box: fill-box;
+        transform-origin: left center;
+        animation: cloth var(--T) ease-in-out infinite;
+    }
+    @keyframes pole {
+        0%, 28%  { transform: scaleY(0); }
+        34%, 50% { transform: scaleY(1); }
+        56%, 100% { transform: scaleY(0); }
+    }
+    @keyframes cloth {
+        0%, 33%  { transform: scaleX(0); }
+        39%, 49% { transform: scaleX(1); }
+        54%, 100% { transform: scaleX(0); }
+    }
+
+/* ---- Wayfarer: Step by step, as far as the light reaches; then he stands in the darkness and sinks into it ---- */
+    .walker { animation: walker var(--T) infinite; }
+    @keyframes walker {
+        0%        { transform: translate(38px, 153px) scale(1);    opacity: 0; animation-timing-function: ease-out; }
+        6%, 14%   { transform: translate(38px, 153px) scale(1);    opacity: 1; animation-timing-function: ease-in-out; }
+        22%       { transform: translate(52.2px, 147.2px) scale(1); }
+        29%       { transform: translate(66.7px, 142px) scale(1); }
+        36%       { transform: translate(80px, 134.2px) scale(1); }
+        44%, 64%  { transform: translate(94.5px, 128.9px) scale(1); opacity: 1; animation-timing-function: ease-in; }
+        88%       { transform: translate(94.5px, 133px) scale(.55);  opacity: .12; }
+        92%, 98%  { transform: translate(94.5px, 133px) scale(.55);  opacity: 0; }
+        99%, 100% { transform: translate(38px, 153px) scale(1);    opacity: 0; }
+    }
+
+/* ---- The Well: The earth opens up, and the entire world becomes a well ---- */
+    .well-body {
+        transform: scale(0);
+        opacity: 0;
+        animation: well var(--T) cubic-bezier(.5, 0, .2, 1) infinite;
+    }
+    @keyframes well {
+        0%, 57%   { transform: scale(0);   opacity: 0; }
+        60%       { transform: scale(.9);  opacity: 1; }
+        90%, 93%  { transform: scale(6.6); opacity: 1; }
+        98%, 100% { transform: scale(6.6); opacity: 0; }
+    }
+    .ripple {
+        fill: none;
+        stroke: #8d9bff;
+        stroke-width: .8;
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: ripple 3.3s linear var(--rd, 0s) infinite;
+    }
+/* Rings receding inwards = sense of depth/recession */
+    @keyframes ripple {
+        0%   { transform: scale(1);   opacity: 0; }
+        20%  { opacity: .55; }
+        100% { transform: scale(.12); opacity: 0; }
+    }
+}
+
+/* Pauses when out of view or hovered over (so the poem can be read) */
+.saadi-medallion.paused *,
+.saadi-medallion.paused,
+.saadi-medallion.hold *,
+.saadi-medallion.hold { animation-play-state: paused !important; }
+
+@media (prefers-reduced-motion: reduce) {
+/* Static state: "Path" illuminated and poem complete */
+    .saadi-medallion .dawn, .saadi-medallion .rim { opacity: 1; }
+    .saadi-medallion .well-body { opacity: 0; }
+    .saadi-medallion .walker { transform: translate(80px, 134.2px); }
+}

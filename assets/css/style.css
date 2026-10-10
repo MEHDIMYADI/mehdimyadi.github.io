@@ -23,15 +23,6 @@
             #0b1120 100%);
     --footer-bg: linear-gradient(135deg, #2c2c44, #3a3a67, #1a1a2e, #2c2c44);    
     --footer-text: #f1f5f9;
-    --mountain-color: #7f8c8d;
-    --mountain-shadow: rgba(0, 0, 0, 0.2);
-    --cloud-color: #ecf0f1;
-    --flag-pole: #9E6D4D;
-    --flag-flag: #e74c3c;
-    --dash-color: #c0392b;
-    --overlay-bg: rgba(0, 0, 0, 0.2);
-    --overlay-text: #ffffff;
-    --flag-bg: rgba(25, 50, 80, 0.5);
     --avatar-border: #60a5fa;
     --avatar-glow: rgba(96, 165, 250, 0.8);
     --avatar-glow-alt: rgba(96, 180, 255, 0.6);
@@ -62,15 +53,6 @@ body.light {
             #c0e0f8 100%);
     --footer-bg: linear-gradient(135deg, #4a4f77, #5a5fb3, #3d6dbd, #4a4f77);    
     --footer-text: #f1f5f9;    
-    --mountain-color: #95a5a6;
-    --mountain-shadow: rgba(0, 0, 0, 0.1);
-    --cloud-color: #f0f4f8;
-    --flag-pole: #d69d7c;
-    --flag-flag: #f87171;
-    --dash-color: #e53e3e;
-    --overlay-bg: rgba(255, 255, 255, 0.2);
-    --overlay-text: #1e293b;
-    --flag-bg: rgba(100, 160, 220, 0.4);
     --avatar-border: #0ea5e9;
     --avatar-glow: rgba(14, 165, 233, 0.5);
     --avatar-glow-alt: rgba(30, 180, 250, 0.35);
@@ -95,10 +77,10 @@ body::before {
     z-index: -1;
 }
 
-* {
+/* It is not just UI elements that are selectable; text (such as emails and descriptions) can be copied. */
+button, header, nav, .nav-link, .scroll-down, .skill-bar-container, .loading-overlay {
     -webkit-user-select: none;
     -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
 }
 
@@ -111,7 +93,7 @@ body {
 }
 
 html {
-    -behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 h1, h2, h3, p, a {
@@ -364,348 +346,6 @@ nav {
 }
 
 /* ==========================
-   Mountain Flag Section
-========================== */
-.mountain-flag {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    position: relative;
-    margin: 0 auto;
-    overflow: hidden;
-    background: var(--flag-bg);
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 4px solid var(--accent-color);
-    box-shadow: 0 0 15px var(--mountain-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;  
-}
-    
-.mountain-flag div, .mountain-flag div::after, .mountain-flag div::before {
-    position: absolute;
-}
-
-.mountain-flag:hover {
-    transform: scale(1.05);    
-    box-shadow: 0 0 5px var(--avatar-glow), 0 0 15px var(--avatar-glow-alt);
-    border-color: var(--avatar-border);    
-}
-    
-.mountain-flag:hover .overlay {
-    animation: none;
-    opacity: 1;
-    backdrop-filter: blur(3px);
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.mountain-flag:hover #climber-quote {
-    transform: scale(1.10);
-}
-
-.mountain {
-    width: 0;
-    height: 0;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    bottom: 0;
-    left: 0;
-}
-.mountain::after, .mountain::before {
-    content: "";
-    width: 0;
-    height: 0;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-}
-.mountain::after {
-    bottom: -170px;
-    left: -130px;
-}
-.mountain::before {
-    bottom: -200px;
-    left: -50px;
-}
-
-.cloud, .cloud2 {
-    border-radius: 50%;
-}
-.cloud {
-    width: 36px;
-    height: 30px;
-    top: 50px;
-    left: 110px;
-    animation: cloud 20s linear infinite;
-}
-.cloud::before, .cloud::after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-}
-.cloud::before {
-    width: 50px;
-    height: 50px;
-    bottom: 0;
-    left: -25px;
-}
-.cloud::after {
-    width: 40px;
-    height: 40px;
-    bottom: 0;
-    left: 15px;
-}
-@keyframes cloud {
-    0% {
-        transform: translateX(-200px);
-    }
-    100% {
-        transform: translateX(200px);
-    }
-}
-
-.cloud2 {
-    width: 18px;
-    height: 15px;
-    top: 30px;
-    left: 125px;
-    animation: cloud2 40s linear infinite;
-}
-.cloud2::before {
-    width: 25px;
-    height: 25px;
-    bottom: 0;
-    left: 7px;
-}
-.cloud2::after {
-    width: 20px;
-    height: 20px;
-    bottom: 0;
-    left: -8px;
-}
-@keyframes cloud2 {
-    0% {
-        transform: translateX(-300px);
-    }
-    100% {
-        transform: translateX(300px);
-    }
-}
-
-.flag {
-    width: 4px;
-    height: 0;
-    top: 54px;
-    left: calc(50% - 2px);
-    animation: pole 10s linear infinite;
-}
-@keyframes pole {
-    0%, 20% {
-        height: 0;
-        top: 54px;
-    }
-    30%, 70% {
-        height: 30px;
-        top: 24px;
-    }
-    80%, 100% {
-        height: 0;
-        top: 54px;
-    }
-}
-.flag::before, .flag::after {
-    content: "";
-    position: absolute;
-    top: 0;
-}
-.flag::before {
-    height: 16px;
-    width: 0;
-    left: 4px;
-    animation: flag 10s linear infinite;
-}
-@keyframes flag {
-    30% {
-        width: 0;
-    }
-    35%, 60% {
-        width: 10px;
-    }
-    65%, 100% {
-        width: 0;
-    }
-}
-.flag::after {
-    left: 8px;
-    border-top: 8px solid #e74c3c;
-    border-bottom: 8px solid #e74c3c;
-    border-right: 0 solid transparent;
-    animation: tip 10s linear infinite;
-}
-@keyframes tip {
-    31% {
-        border-right: 0 solid transparent;
-        left: 8px;
-    }
-    37%, 58% {
-        border-right: 8px solid transparent;
-        left: 14px;
-    }
-    64%, 100% {
-        border-right: 0 solid transparent;
-        left: 8px;
-    }
-}
-
-.dash {
-    height: 10px;
-    width: 3px;
-    opacity: 0;
-    animation: dash 10s linear infinite;
-}
-@keyframes dash {
-    0%, 1%, 51%, 100% {
-        opacity: 0;
-    }
-    2%, 50% {
-        opacity: 1;
-    }
-}
-.dash1 {
-    top: 60px;
-    left: 100px;
-    transform: rotate(-10deg);
-    animation-delay: 1.8s;
-}
-.dash2 {
-    top: 74px;
-    left: 100px;
-    transform: rotate(10deg);
-    animation-delay: 1.6s;
-}
-.dash3 {
-    top: 88px;
-    left: 96px;
-    transform: rotate(20deg);
-    animation-delay: 1.4s;
-}
-.dash4 {
-    top: 102px;
-    left: 93px;
-    transform: rotate(0deg);
-    animation-delay: 1.2s;
-}
-.dash5 {
-    top: 116px;
-    left: 96px;
-    transform: rotate(-20deg);
-    animation-delay: 1s;
-}
-.dash6 {
-    top: 130px;
-    left: 102px;
-    transform: rotate(-30deg);
-    animation-delay: 0.8s;
-}
-.dash7 {
-    top: 144px;
-    left: 109px;
-    transform: rotate(-20deg);
-    animation-delay: 0.6s;
-}
-.dash8 {
-    top: 158px;
-    left: 112px;
-    transform: rotate(-10deg);
-    animation-delay: 0.4s;
-}
-.dash9 {
-    top: 172px;
-    left: 113px;
-    transform: rotate(0deg);
-    animation-delay: 0.2s;
-}
-.dash10 {
-    top: 186px;
-    left: 112px;
-    transform: rotate(10deg);
-    animation-delay: 0s;
-}
-
-.overlay {
-    position: absolute;
-    inset: 0;
-    backdrop-filter: blur(0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    /*animation: blurOverlay 10s linear infinite;*/
-}
-
-/*@keyframes blurOverlay {
-    0%, 40% {
-        backdrop-filter: blur(0);
-        background: rgba(0, 0, 0, 0);
-        opacity: 0;
-    }
-    41%, 50% {
-        backdrop-filter: blur(3px);
-        background: rgba(0, 0, 0, 0.2);
-        opacity: 1;
-    }
-    60%, 100% {
-        backdrop-filter: blur(0);
-        background: rgba(0, 0, 0, 0);
-        opacity: 0;
-    }
-}*/
-
-.flag-scene {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    transform-origin: center center;
-    transition: transform 0.4s ease;
-}
-
-.mountain, .mountain::before, .mountain::after {
-    border-bottom: 150px solid var(--mountain-color);
-}
-
-.cloud, .cloud2, .cloud::before, .cloud::after, .cloud2::before, .cloud2::after {
-    background: var(--cloud-color);
-}
-
-.flag {
-    background: var(--flag-pole);
-}
-.flag::before, .flag::after {
-    background: var(--flag-flag);
-    border-top-color: var(--flag-flag);
-    border-bottom-color: var(--flag-flag);
-}
-
-.dash {
-    background: var(--dash-color);
-}
-
-#climber-quote {
-    white-space: pre-line;
-    transition: transform 2s ease, box-shadow 1s ease;
-}
-
-@media (max-width: 768px) {
-    .mountain-flag {
-        width: 130px;
-        height: 130px;
-    }
-    .flag-scene {
-        transform: scale(0.65);
-    }
-}
-    
-/* ==========================
    Hero Section
 ========================== */
 #hero {
@@ -781,8 +421,7 @@ nav {
     font-size: 20px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(0, 0, 0, .5)
-    animation: animate 2s linear infinite;
+    box-shadow: 0 0 20px rgba(0, 0, 0, .5);
 }
 
 .loading-ring:before {
@@ -1299,7 +938,7 @@ footer {
 	text-decoration: none;
 	font-weight: normal;
 	font-size: 0.85rem;
-	transition: var(--transition);
+	transition: color 0.3s ease;
 }
 .footer-link:hover {
 	color: white;

@@ -4,42 +4,37 @@
     "@graph": [
       {
         "@type": "Person",
+        "@id": "https://dimyadi.ir/#person",
         "name": "مهدی دیمیادی",
-        "url": "https://github.com/MEHDIMYADI",
+        "url": "https://dimyadi.ir/",
+        "image": "https://dimyadi.ir/assets/images/icon-512.png",
+        "jobTitle": "توسعه‌دهنده موبایل، دسکتاپ و وب",
+        "description": "توسعه‌دهنده با تجربه در پروژه‌های Flutter، WinUI3، C# و Arduino.",
+        "knowsAbout": [
+          "Flutter",
+          "WinUI 3",
+          "C#",
+          ".NET",
+          "Kotlin",
+          "Java",
+          "Arduino",
+          "Excel add-ins",
+          "Web development"
+        ],
         "sameAs": [
           "https://github.com/MEHDIMYADI",
           "https://www.linkedin.com/in/mehdimyadi/"
-        ],
-        "jobTitle": "توسعه‌دهنده موبایل، دسکتاپ و وب",
-        "description": "توسعه‌دهنده با تجربه در پروژه‌های Flutter، WinUI3، C# و Arduino."
+        ]
       },
       {
-        "@type": "SoftwareApplication",
+        "@type": "WebSite",
+        "@id": "https://dimyadi.ir/#website",
+        "url": "https://dimyadi.ir/",
         "name": "مهدی دیمیادی - پرتفولیو توسعه‌دهنده",
-        "headline": "مهدی دیمیادی - پرتفولیو توسعه‌دهنده",
         "description": "مهدی دیمیادی، توسعه‌دهنده موبایل، دسکتاپ و وب با تجربه در پروژه‌های Flutter، WinUI3، C# و Arduino. مشاهده نمونه کارها و مهارت‌ها.",
         "inLanguage": "fa-IR",
-        "applicationCategory": "Software",
-        "operatingSystem": "Windows, macOS, Linux, Android, iOS",
-        "softwareVersion": "1.0",
-        "image": "https://placehold.co/128x128/0F52BA/FFF?text=Mehdi%20Dimyadi",
-        "author": {
-          "@type": "Person",
-          "name": "مهدی دیمیادی"
-        },
-        "downloadUrl": "",
-        "url": "https://github.com/MEHDIMYADI",
-        "datePublished": "2025-10-15",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD",
-          "url": "https://github.com/MEHDIMYADI"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "120"
+        "publisher": {
+          "@id": "https://dimyadi.ir/#person"
         }
       }
     ]
@@ -49,42 +44,37 @@
     "@graph": [
       {
         "@type": "Person",
+        "@id": "https://dimyadi.ir/#person",
         "name": "Mehdi Dimyadi",
-        "url": "https://github.com/MEHDIMYADI",
+        "url": "https://dimyadi.ir/",
+        "image": "https://dimyadi.ir/assets/images/icon-512.png",
+        "jobTitle": "Mobile, Desktop, and Web Developer",
+        "description": "Developer experienced in Flutter, WinUI3, C#, and Arduino projects.",
+        "knowsAbout": [
+          "Flutter",
+          "WinUI 3",
+          "C#",
+          ".NET",
+          "Kotlin",
+          "Java",
+          "Arduino",
+          "Excel add-ins",
+          "Web development"
+        ],
         "sameAs": [
           "https://github.com/MEHDIMYADI",
           "https://www.linkedin.com/in/mehdimyadi/"
-        ],
-        "jobTitle": "Mobile, Desktop, and Web Developer",
-        "description": "Developer experienced in Flutter, WinUI3, C#, and Arduino projects."
+        ]
       },
       {
-        "@type": "SoftwareApplication",
+        "@type": "WebSite",
+        "@id": "https://dimyadi.ir/#website",
+        "url": "https://dimyadi.ir/",
         "name": "Mehdi Dimyadi - Developer Portfolio",
-        "headline": "Mehdi Dimyadi - Developer Portfolio",
         "description": "Mehdi Dimyadi, mobile, desktop, and web developer with experience in Flutter, WinUI3, C#, and Arduino projects. Explore skills and portfolio.",
         "inLanguage": "en-US",
-        "applicationCategory": "Software",
-        "operatingSystem": "Windows, macOS, Linux, Android, iOS",
-        "softwareVersion": "1.0",
-        "image": "https://placehold.co/128x128/0F52BA/FFF?text=Mehdi%20Dimyadi",
-        "author": {
-          "@type": "Person",
-          "name": "Mehdi Dimyadi"
-        },
-        "downloadUrl": "",
-        "url": "https://github.com/MEHDIMYADI",
-        "datePublished": "2025-10-15",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD",
-          "url": "https://github.com/MEHDIMYADI"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "reviewCount": "120"
+        "publisher": {
+          "@id": "https://dimyadi.ir/#person"
         }
       }
     ]

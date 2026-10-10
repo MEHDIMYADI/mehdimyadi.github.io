@@ -27,9 +27,13 @@ window.addEventListener('load', () => setVh());
 setVh();
 
 // ---------------------- Global variables ----------------------
-let currentLang = localStorage.getItem("lang") || "en";
+// First visit: browser language; thereafter: user's own selection
+let currentLang = localStorage.getItem("lang") || (navigator.language && navigator.language.toLowerCase().startsWith("fa") ? "fa" : "en");
 let currentTheme = localStorage.getItem("theme") || "dark";
 let isMenuOpen = false;
+let sliderTimers = [];
+let langData = null;
+let activeFilter = "all";
 
 // ---------------------- Loading Screen ----------------------
 async function loadingScreen(data, stepFuncPairs) {
@@ -71,13 +75,16 @@ function updateLangSwitchText() {
 
 // Update all text content based on language data (no reload of skills/projects)
 function updateTextContent(data) {
+    langData = data;
     document.documentElement.lang = currentLang;
+    document.documentElement.dir = currentLang === "fa" ? "rtl" : "ltr";
     document.body.setAttribute("dir", currentLang === "fa" ? "rtl" : "ltr");
+    document.title = currentLang === "fa" ? "مهدی دیمیادی | Mehdi Dimyadi" : "Mehdi Dimyadi | مهدی دیمیادی";
 
     document.getElementById("logo").textContent = data.logo.title;
     document.getElementById("hero-title").textContent = data.hero.title;
     document.getElementById("hero-subtitle").textContent = data.hero.subtitle;
-    document.getElementById("climber-quote").textContent = data.hero.quote;
+    renderQuote(document.getElementById("climber-quote"), data.hero.quote);
     document.getElementById("skills-title").textContent = data.skills.title;
     document.getElementById("projects-title").textContent = data.projects.title;
     document.getElementById("experience-title").textContent = data.experience.title;
@@ -96,6 +103,36 @@ function updateTextContent(data) {
     document.getElementById("dimyadi-title").textContent = data.footer.dimyadi;
     copyright(currentLang);
     loadFooterLinks(currentLang, 'main');
+
+    // Other scripts (enhance.js) are notified of the language change via this event.
+    document.dispatchEvent(new CustomEvent("langready", { detail: data }));
+}
+
+// -------------------------------
+// Saadi's poem: Each hemistich is wrapped in a `<span>` to synchronize with the animation.
+// -------------------------------
+function renderQuote(el, text) {
+    if (!el) return;
+    const raw = String(text || "").split("\n").map(l => l.trim()).filter(Boolean);
+    const strip = l => l.replace(/^[«"“]\s*/, "").replace(/\s*[»"”]$/, "");
+    const author = raw.length && /^[—–-]/.test(raw[raw.length - 1]) ? raw.pop() : "";
+    const verses = raw.map(strip);
+
+    el.textContent = "";
+    verses.slice(0, 4).forEach((line, i) => {
+        const span = document.createElement("span");
+        span.className = "pl pl-" + (i + 1);
+        span.textContent = line;
+        el.appendChild(span);
+    });
+    if (author) {
+        const a = document.createElement("span");
+        a.className = "pa";
+        a.textContent = author;
+        el.appendChild(a);
+    }
+    const fig = el.closest("figure");
+    if (fig) fig.setAttribute("aria-label", verses.join("، ") + (author ? " " + author : ""));
 }
 
 function setupLangSwitch() {
@@ -112,6 +149,7 @@ function setupLangSwitch() {
 
 		// Update texts and UI
         updateTextContent(data);
+        injectSEOData();
 
 		// Reload sections
         loadSkills();
@@ -134,6 +172,9 @@ function applyTheme(theme) {
     }
 
     localStorage.setItem("theme", theme);
+
+    const tc = document.querySelector('meta[name="theme-color"]');
+    if (tc) tc.content = theme === "dark" ? "#0b1120" : "#f8fafc";
 }
 
 function updateThemeIcon() {
@@ -227,13 +268,13 @@ async function loadAllComponents() {
 	const components = [];
 
 	if (document.getElementById('header'))
-		components.push({ id: 'header', url: '../../components/header.html' });
+		components.push({ id: 'header', url: 'components/header.html' });
 		
 	if (document.getElementById('heroComp')) 
-		components.push({ id: 'heroComp', url: '../../components/hero.html' });
+		components.push({ id: 'heroComp', url: 'components/hero.html' });
 
 	if (document.getElementById('footer')) 
-		components.push({ id: 'footer', url: '../../components/footer.html' });
+		components.push({ id: 'footer', url: 'components/footer.html' });
 	
 	for (const c of components) {
 		await loadComponent(c.id, c.url);
@@ -259,7 +300,7 @@ function loadComponent(id, url) {
 // ---------------------- load Footer Links ----------------------
 async function loadFooterLinks(lang, section = 'main') {
     try {
-        const res = await fetch('../../data/footer.json');
+        const res = await fetch('data/footer.json');
         const data = await res.json();
         const links = data.links[section];
 
@@ -286,6 +327,7 @@ async function loadFooterLinks(lang, section = 'main') {
 // ---------------------- DOMContentLoaded ----------------------
 document.addEventListener("DOMContentLoaded", async () => {
 	applyTheme(currentTheme);
+	injectSEOData();
 	
 	const data = await loadLanguage(currentLang);
 	await loadAllComponents();
@@ -296,7 +338,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     setupNavLinks();
 
     // Load the main content
-    await loadHero(data);
+    loadHero(data);          // بدون await: متن‌ها منتظر شبکه نمی‌مانند
     updateTextContent(data);
     
     const steps = [
@@ -315,17 +357,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 // Load Hero Section (GitHub Avatar)
 // -------------------------------
 async function loadHero(data) {
-    try {
-        const res = await fetch("https://api.github.com/users/mehdimyadi");
-        const json = await res.json();
-        const avatar = document.getElementById("hero-avatar");
-        if (avatar) {
-            avatar.alt = data.hero.title
-            avatar.src = json.avatar_url;
-        }
-    } catch (error) {
-        console.error("GitHub avatar could not be loaded:", error);
-    }
+    const avatar = document.getElementById("hero-avatar");
+    if (!avatar) return;
+    avatar.alt = data.hero.title;
+    // آدرس مستقیم آواتار؛ بدون API (محدودیت ۶۰ درخواست در ساعت ندارد)
+    avatar.onerror = () => {
+        avatar.onerror = null;
+        avatar.src = "assets/images/icon-512.png";
+    };
+    avatar.src = "https://github.com/MEHDIMYADI.png?size=400";
 }
 
 // -------------------------------
@@ -341,7 +381,7 @@ async function loadLanguage(lang) {
 // Load Skills
 // -------------------------------
 async function loadSkills() {
-    const res = await fetch("../../data/skills.json");
+    const res = await fetch("data/skills.json");
     const skills = await res.json();
     const container = document.getElementById("skills-container");
     if (!container) return;
@@ -390,65 +430,139 @@ async function loadSkills() {
 }
 
 // -------------------------------
-// Load Projects
+// Load Projects (with category filter + slider dots)
 // -------------------------------
+const FILTER_ORDER = ["all", "mobile", "desktop", "web", "embedded", "automation"];
+
+function projectLabels() {
+    return (langData && langData.projects && langData.projects.filters) || {};
+}
+
+function renderProjectFilters(projects) {
+    const bar = document.getElementById("projects-filter");
+    if (!bar) return;
+
+    const labels = projectLabels();
+    const counts = { all: projects.length };
+    projects.forEach(p => { counts[p.category] = (counts[p.category] || 0) + 1; });
+    const nf = new Intl.NumberFormat(currentLang === "fa" ? "fa-IR" : "en-US");
+
+    if (!counts[activeFilter]) activeFilter = "all";
+
+    bar.innerHTML = FILTER_ORDER.filter(k => counts[k]).map(k => `
+        <button type="button" class="filter-chip${k === activeFilter ? " active" : ""}" data-filter="${k}" aria-pressed="${k === activeFilter}">
+            <span>${labels[k] || k}</span><span class="count">${nf.format(counts[k])}</span>
+        </button>`).join("");
+
+    bar.querySelectorAll(".filter-chip").forEach(btn => {
+        btn.addEventListener("click", () => applyProjectFilter(btn.dataset.filter));
+    });
+}
+
+function applyProjectFilter(filter) {
+    activeFilter = filter;
+    document.querySelectorAll("#projects-filter .filter-chip").forEach(btn => {
+        const on = btn.dataset.filter === filter;
+        btn.classList.toggle("active", on);
+        btn.setAttribute("aria-pressed", on);
+    });
+    document.querySelectorAll("#projects-container .project-card").forEach(card => {
+        const show = filter === "all" || card.dataset.cat === filter;
+        card.classList.toggle("is-filtered", !show);
+        if (show) {
+            card.classList.remove("pop");
+            void card.offsetWidth;           // برای شروع دوباره‌ی انیمیشن
+            card.classList.add("pop");
+        }
+    });
+}
+
 async function loadProjects() {
-    const res = await fetch("../../data/projects.json");
+    const res = await fetch("data/projects.json");
     const projects = await res.json();
     const container = document.getElementById("projects-container");
     if (!container) return;
 
+    sliderTimers.forEach(clearInterval);
+    sliderTimers = [];
     container.innerHTML = "";
+
+    renderProjectFilters(projects);
+    const labels = projectLabels();
+    const soon = (langData && langData.projects && langData.projects.soon) || "Soon";
+
     projects.forEach(proj => {
-        const card = document.createElement("div");
+        const name = proj.name[currentLang];
+        const images = proj.images || [];
         const validLinks = (proj.links || []).filter(link => link.url && link.url.trim() !== "");
 
-        card.className = "project-card overflow-hidden relative";
+        const card = document.createElement("div");
+        card.className = "project-card";
+        card.dataset.cat = proj.category || "other";
         card.innerHTML = `
-            <div class="project-slider relative overflow-hidden">
-                ${proj.images.map((img, i) => `
-                    <img src="${img}" alt="${proj.name[currentLang]}" class="project-slider absolute object-cover transition-opacity duration-500 ${i === 0 ? 'opacity-100' : 'opacity-0'}">
-                `).join('')}
+            <div class="project-slider">
+                ${images.map((img, i) => `<img src="${img}" alt="${name}" loading="lazy" decoding="async" class="${i === 0 ? "opacity-100" : "opacity-0"}">`).join("")}
+                ${labels[proj.category] ? `<span class="proj-badge">${labels[proj.category]}</span>` : ""}
+                ${validLinks.length === 0 ? `<span class="proj-soon">${soon}</span>` : ""}
+                ${images.length > 1 ? `<div class="slider-dots">${images.map((_, i) => `<button type="button" class="dot${i === 0 ? " on" : ""}" aria-label="${i + 1}"></button>`).join("")}</div>` : ""}
             </div>
             <div>
-                <h3>${proj.name[currentLang]}</h3>
+                <h3>${name}</h3>
                 <p>${proj.description[currentLang]}</p>
             </div>
-            <div>
-                ${proj.links.map(link => `
-                    <button onclick="window.open('${link.url}', '_blank')" title="${link.tooltip[currentLang]}">
+            <div class="project-links">
+                ${validLinks.map(link => `
+                    <button type="button" data-url="${link.url}" title="${link.tooltip[currentLang]}" aria-label="${link.tooltip[currentLang]}">
                         <i class="${link.icon}"></i>
-                    </button>
-                `).join('')}
+                    </button>`).join("")}
             </div>
         `;
 
         if (validLinks.length === 0) {
+            card.classList.add("is-disabled");
             card.style.pointerEvents = "none";
-            card.style.opacity = "0.5";
-            card.style.userSelect = "none";
-            card.style.filter = "grayscale(70%)";
         }
+
+        // Instead of onclick in HTML (safer and more controllable)
+        card.querySelectorAll("button[data-url]").forEach(btn => {
+            btn.addEventListener("click", () => window.open(btn.dataset.url, "_blank", "noopener,noreferrer"));
+        });
 
         container.appendChild(card);
 
+        // Slider + Dots
         const imgs = card.querySelectorAll(".project-slider img");
-        let current = 0;
-        setInterval(() => {
-            imgs[current].classList.remove("opacity-100");
-            imgs[current].classList.add("opacity-0");
-            current = (current + 1) % imgs.length;
-            imgs[current].classList.remove("opacity-0");
-            imgs[current].classList.add("opacity-100");
-        }, 3000);
+        const dots = card.querySelectorAll(".slider-dots .dot");
+        if (imgs.length > 1) {
+            let current = 0;
+            const show = i => {
+                imgs[current].classList.replace("opacity-100", "opacity-0");
+                dots[current] && dots[current].classList.remove("on");
+                current = i;
+                imgs[current].classList.replace("opacity-0", "opacity-100");
+                dots[current] && dots[current].classList.add("on");
+            };
+            let timer = setInterval(() => show((current + 1) % imgs.length), 3500);
+            sliderTimers.push(timer);
+
+            dots.forEach((dot, i) => dot.addEventListener("click", e => {
+                e.stopPropagation();
+                show(i);
+                clearInterval(timer);
+                timer = setInterval(() => show((current + 1) % imgs.length), 3500);
+                sliderTimers.push(timer);
+            }));
+        }
     });
+
+    if (activeFilter !== "all") applyProjectFilter(activeFilter);
 }
 
 // -------------------------------
-// Load Experience
+// Load Experience (Timeline)
 // -------------------------------
 async function loadExperience() {
-    const res = await fetch("../../data/experience.json");
+    const res = await fetch("data/experience.json");
     const experience = await res.json();
     const container = document.getElementById("experience-container");
     if (!container) return;
@@ -458,11 +572,12 @@ async function loadExperience() {
         const div = document.createElement("div");
         div.className = "experience-card";
         div.innerHTML = `
-            <div class="experience-icon"><i class="fas ${item.icon}"></i></div>
+            <span class="tl-node" aria-hidden="true"></span>
+            <div class="experience-icon"><i class="${item.icon}"></i></div>
             <div class="experience-text">
                 <h3>${item.role[currentLang]}</h3>
-                <p>${item.company[currentLang]}</p>
-                <p>${item.period[currentLang]}</p>
+                <p class="exp-company">${item.company[currentLang]}</p>
+                <p class="exp-period">${item.period[currentLang]}</p>
                 <p>${item.details[currentLang]}</p>
             </div>
         `;
@@ -475,7 +590,7 @@ async function loadExperience() {
 // -------------------------------
 async function injectSEOData() {
   try {
-    const res = await fetch('../../data/seo.json');
+    const res = await fetch('data/seo.json');
     if (!res.ok) throw new Error('SEO JSON could not be loaded');
     const seo = await res.json();
 
@@ -488,20 +603,21 @@ async function injectSEOData() {
 
       const script = document.createElement('script');
       script.type = 'application/ld+json';
-      script.text = JSON.stringify(data, null, 2);
+      script.text = JSON.stringify(data);
       document.head.appendChild(script);
-
-      if (lang === (navigator.language.startsWith('fa') ? 'fa' : 'en')) {
-        const meta = document.createElement('meta');
-        meta.name = 'description';
-        meta.content = data['@graph']?.[1]?.description || '';
-        document.head.appendChild(meta);
-      }
     });
 
-    console.log('✅ SEO injected: JSON-LD (fa + en) + meta description');
+    // Meta description in the page's current language
+    const cur = seo[currentLang];
+    const site = cur && cur['@graph'] && cur['@graph'].find(g => g['@type'] === 'WebSite');
+    if (site && site.description) {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = site.description;
+      document.head.appendChild(meta);
+    }
     //Does your page support rich results?
-    //https://search.google.com/test/rich-results             
+    //https://search.google.com/test/rich-results
   } catch (err) {
     console.error('⚠️ injectSEOData Error:', err);
   }
@@ -543,6 +659,55 @@ function copyright(lang) {
 
     const baseText = lang === 'fa' ? "مهدی دیمیادی." : "Mehdi Dimyadi.";
     p.textContent = `${baseText} © ${yearText}`;
+
+    loadSiteVersion();
+}
+
+// -------------------------------
+// Site version from the latest GitHub tag
+// -------------------------------
+const SITE_REPO = 'MEHDIMYADI/mehdimyadi.github.io';
+
+async function fetchLatestRelease(repo) {
+    // The API does not guarantee the order of tags; we select the highest version ourselves (v1.10.0 > v1.9.0)
+    const pickNewest = names => names.reduce((a, b) => {
+        const x = (a.match(/\d+/g) || []).map(Number), y = (b.match(/\d+/g) || []).map(Number);
+        for (let i = 0; i < Math.max(x.length, y.length); i++) {
+            if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0) ? a : b;
+        }
+        return a;
+    });
+
+    try {
+        const res = await fetch(`https://api.github.com/repos/${repo}/tags?per_page=100`);
+        if (res.ok) {
+            const tags = await res.json();
+            if (tags.length) return pickNewest(tags.map(t => t.name));
+        }
+    } catch (err) { console.warn(`fetchLatestRelease(tags) ${repo}:`, err.message); }
+
+    try {
+        const res = await fetch(`https://api.github.com/repos/${repo}/releases/latest`);
+        if (res.ok) return (await res.json()).tag_name || null;
+    } catch (err) { console.warn(`fetchLatestRelease(releases) ${repo}:`, err.message); }
+
+    return null;
+}
+
+async function loadSiteVersion() {
+    const el = document.getElementById('site-version');
+    if (!el || el.dataset.loaded) return;
+
+    const cached = sessionStorage.getItem('site-version-cache');
+    if (cached) { el.textContent = cached; el.href = `https://github.com/${SITE_REPO}/releases/tag/${cached}`; }
+
+    const tag = await fetchLatestRelease(SITE_REPO);
+    if (tag) {
+        el.textContent = tag;
+        el.href = `https://github.com/${SITE_REPO}/releases/tag/${tag}`;
+        el.dataset.loaded = '1';
+        sessionStorage.setItem('site-version-cache', tag);
+    }   // Error or no tag: cached value remains; otherwise, the badge is hidden.
 }
 
 // -------------------------------

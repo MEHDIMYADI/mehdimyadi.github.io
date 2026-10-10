@@ -1,41 +1,57 @@
 {
-	"logo": {
-		"title": "DIMYADI"
-	},
-	"nav": {
-		"home": "Home",
-		"skills": "Skills",
-		"projects": "Projects",
-		"experience": "Experience"
+  "logo": {
+    "title": "DIMYADI"
+  },
+  "nav": {
+    "home": "Home",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience"
+  },
+  "loading": {
+    "title": "Loading...",
+    "skills": "Loading Skills...",
+    "projects": "Loading Projects...",
+    "experience": "Loading Experience...",
+    "ready": "✓"
+  },
+  "hero": {
+    "title": "Mehdi Dimyadi",
+    "subtitle": "I'm a cross-platform software developer who loves turning ideas into seamless, intelligent, and high-performing digital experiences. I focus on crafting clean code, thoughtful design, and smooth interactions that feel natural to users. Always learning, always building — because great software is never finished.",
+    "quote": "\"If you show the way,\nthe whole world is a road;\nif you withhold your hand,\nthe whole world is a pit.\"\n\n— Saadi",
+    "roles": [
+      "Mobile Developer · Flutter & Android",
+      "Desktop Developer · WinUI 3 & C#",
+      "Web & PWA Developer",
+      "Arduino & Embedded Systems Builder",
+      "Excel Add-in & Automation Developer"
+    ]
+  },
+  "skills": {
+    "title": "Skills"
+  },
+  "projects": {
+    "title": "Projects",
+    "filters": {
+      "all": "All",
+      "mobile": "Mobile",
+      "desktop": "Desktop",
+      "web": "Web",
+      "embedded": "Embedded",
+      "automation": "Automation"
     },
-	"loading": {
-		"title": "Loading...",
-        "skills": "Loading Skills...",
-        "projects": "Loading Projects...",
-        "experience": "Loading Experience...",
-        "ready": "✓"
-	},
-	"hero": {
-		"title": "Mehdi Dimyadi",
-		"subtitle": "I'm a cross-platform software developer who loves turning ideas into seamless, intelligent, and high-performing digital experiences. I focus on crafting clean code, thoughtful design, and smooth interactions that feel natural to users. Always learning, always building — because great software is never finished.",
-		"quote": "\"If you guide,\nAll the world\nTakes a path,\nHold no hand,\nAll turns pit.\"\n\n— Saadi"
-	},
-	"skills": {
-		"title": "Skills"
-	},
-	"projects": {
-		"title": "Projects"
-	},
-	"experience": {
-		"title": "Experience"
-	},
-	"footer": {
-        "about": "About",
-        "links": "Links",    
-        "contact": "Contact",
-        "support": "Support",
-        "call": "Call me at your earliest convenience",
-        "address": "Iran",
-        "dimyadi": "Dimyadi – derived from 'Dimyad', meaning generosity, nobility, and detachment from worldly possessions"
-	}
+    "soon": "Coming soon"
+  },
+  "experience": {
+    "title": "Experience"
+  },
+  "footer": {
+    "about": "About",
+    "links": "Links",
+    "contact": "Contact",
+    "support": "Support",
+    "call": "Call me at your earliest convenience",
+    "address": "Iran",
+    "dimyadi": "Dimyadi – derived from 'Dimyad', meaning generosity, nobility, and detachment from worldly possessions"
+  }
 }

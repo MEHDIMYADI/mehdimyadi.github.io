@@ -1,6 +1,6 @@
     <section id="hero">
         <div class="hero-content">
-            
+
             <div id="avatar-container" class="avatar-wrapper loading">
                 <img id="hero-avatar" alt="Mehdi Dimyadi" />
                 <div class="loading-overlay">
@@ -9,36 +9,129 @@
                     <p class="loading-text" id="loading-title"></p>
                 </div>
             </div>
-            
+
             <h2 id="hero-title"></h2>
-            
+            <p id="hero-roles" class="hero-roles" aria-hidden="true"><span id="role-text"></span><i class="caret"></i></p>
+
             <div class="hero-layout">
                 <p id="hero-subtitle"></p>
-                <div class="mountain-flag">
-                    <div class="flag-scene">
-                        <div class="cloud"></div>
-                        <div class="cloud2"></div>
-                        <div class="mountain"></div>
-                        <div class="dash dash1"></div>
-                        <div class="dash dash2"></div>
-                        <div class="dash dash3"></div>
-                        <div class="dash dash4"></div>
-                        <div class="dash dash5"></div>
-                        <div class="dash dash6"></div>
-                        <div class="dash dash7"></div>
-                        <div class="dash dash8"></div>
-                        <div class="dash dash9"></div>
-                        <div class="dash dash10"></div>
-                        <div class="flag"></div>
-                        <div class="overlay">
-                            <div id="climber-quote"></div>
-                        </div>
-                    </div>
-                </div>
 
+                <!-- Saadi medallion: night journey, animated in step with the verse -->
+                <figure class="saadi-medallion" id="saadi-medallion" role="img" tabindex="0">
+                    <svg class="saadi-svg" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+                        <defs>
+                            <linearGradient id="sg-sky" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0" stop-color="#070a26"/>
+                                <stop offset=".55" stop-color="#141a52"/>
+                                <stop offset="1" stop-color="#262d78"/>
+                            </linearGradient>
+                            <radialGradient id="sg-dawn" cx=".75" cy=".3" r=".85">
+                                <stop offset="0" stop-color="#ffcf8a" stop-opacity=".95"/>
+                                <stop offset=".35" stop-color="#ff9a76" stop-opacity=".45"/>
+                                <stop offset="1" stop-color="#5b4bb7" stop-opacity="0"/>
+                            </radialGradient>
+                            <radialGradient id="sg-glow">
+                                <stop offset="0" stop-color="#fff2c7"/>
+                                <stop offset=".35" stop-color="#ffd27a" stop-opacity=".75"/>
+                                <stop offset="1" stop-color="#ffd27a" stop-opacity="0"/>
+                            </radialGradient>
+                            <linearGradient id="sg-far" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0" stop-color="#2d3584"/>
+                                <stop offset="1" stop-color="#1a2063"/>
+                            </linearGradient>
+                            <linearGradient id="sg-main" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0" stop-color="#1b2260"/>
+                                <stop offset="1" stop-color="#0a0e33"/>
+                            </linearGradient>
+                            <mask id="sg-moon">
+                                <rect width="200" height="200" fill="#fff"/>
+                                <circle cx="49" cy="41" r="7.4" fill="#000"/>
+                            </mask>
+                            <filter id="sg-blur" x="-20%" y="-20%" width="140%" height="140%">
+                                <feGaussianBlur stdDeviation="1.6"/>
+                            </filter>
+                            <clipPath id="sg-clip"><circle cx="100" cy="100" r="100"/></clipPath>
+                        </defs>
+
+                        <g clip-path="url(#sg-clip)">
+                            <rect width="200" height="200" fill="url(#sg-sky)"/>
+                            <g class="stars">
+      <circle class="star" cx="69.0" cy="26.3" r="0.92" style="--sd:0.3s;--sp:3.9s"/>
+      <circle class="star" cx="76.4" cy="16.3" r="0.83" style="--sd:0.1s;--sp:3.6s"/>
+      <circle class="star" cx="86.7" cy="99.3" r="0.58" style="--sd:0.9s;--sp:4.1s"/>
+      <circle class="star" cx="178.8" cy="72.3" r="0.76" style="--sd:3.9s;--sp:2.7s"/>
+      <circle class="star" cx="66.3" cy="98.1" r="0.62" style="--sd:2.3s;--sp:4.1s"/>
+      <circle class="star" cx="77.5" cy="69.2" r="0.54" style="--sd:0.2s;--sp:3.1s"/>
+      <circle class="star" cx="67.3" cy="73.2" r="0.79" style="--sd:1.2s;--sp:4.5s"/>
+      <circle class="star" cx="135.0" cy="36.4" r="0.87" style="--sd:2.1s;--sp:4.7s"/>
+      <circle class="star" cx="85.6" cy="91.8" r="0.6" style="--sd:2.0s;--sp:2.7s"/>
+      <circle class="star" cx="129.6" cy="92.6" r="0.87" style="--sd:3.5s;--sp:3.4s"/>
+      <circle class="star" cx="114.1" cy="59.3" r="1.05" style="--sd:3.8s;--sp:3.7s"/>
+      <circle class="star" cx="128.9" cy="16.6" r="0.96" style="--sd:2.6s;--sp:5.0s"/>
+      <circle class="star" cx="79.9" cy="82.2" r="0.51" style="--sd:1.8s;--sp:3.0s"/>
+      <circle class="star" cx="147.2" cy="24.0" r="0.66" style="--sd:1.6s;--sp:4.7s"/>
+      <circle class="star" cx="26.2" cy="58.5" r="0.86" style="--sd:3.5s;--sp:4.6s"/>
+      <circle class="star" cx="85.1" cy="48.7" r="1.07" style="--sd:3.8s;--sp:3.0s"/>
+      <circle class="star" cx="43.0" cy="35.1" r="0.65" style="--sd:1.9s;--sp:4.0s"/>
+      <circle class="star" cx="85.7" cy="49.9" r="0.87" style="--sd:3.8s;--sp:4.3s"/>
+                            </g>
+                            <circle class="moon" cx="44" cy="44" r="9" fill="#eef1ff" mask="url(#sg-moon)"/>
+                            <rect class="dawn" width="200" height="200" fill="url(#sg-dawn)"/>
+
+                            <!-- far range + main mountain -->
+                            <path d="M0 126 L22 106 L40 118 L66 92 L88 110 L112 84 L134 98 L150 80 L200 112 V200 H0Z" fill="url(#sg-far)" opacity=".75"/>
+                            <path id="sg-mountain" d="M0 142 L150 60 L168 78 L184 100 L200 90 V200 H0Z" fill="url(#sg-main)"/>
+                            <path class="rim" d="M60 114 L150 60 L168 78" fill="none" stroke="#ffd9a0" stroke-width=".9" stroke-linecap="round" stroke-opacity=".7"/>
+                            <path d="M0 176 C34 164 66 172 100 166 S168 160 200 170 V200 H0Z" fill="#070a24"/>
+
+                            <!-- the trail: light the guide casts down to the traveler -->
+                            <path class="trail-glow" d="M141 59 C150 74 132 80 122 93 C112 106 126 112 108 123 C94 131 84 130 70 140 C58 148 48 146 38 153" pathLength="100" fill="none" stroke="#ffd27a" stroke-width="3.2" stroke-linecap="round" filter="url(#sg-blur)"/>
+                            <path class="trail-line" d="M141 59 C150 74 132 80 122 93 C112 106 126 112 108 123 C94 131 84 130 70 140 C58 148 48 146 38 153" pathLength="100" fill="none" stroke="#fff4d2" stroke-width="1" stroke-linecap="round" stroke-dasharray="1.1 2.4"/>
+
+                            <!-- the well (the pit) -->
+                            <g class="well" transform="translate(94 132)">
+                                <g class="well-body">
+                                    <ellipse rx="15" ry="5.4" fill="#02030f"/>
+                                    <ellipse rx="15" ry="5.4" fill="none" stroke="#5963b8" stroke-width=".7" opacity=".7"/>
+                                    <ellipse class="ripple" rx="14" ry="5" style="--rd:0s"/>
+                                    <ellipse class="ripple" rx="14" ry="5" style="--rd:-1.1s"/>
+                                    <ellipse class="ripple" rx="14" ry="5" style="--rd:-2.2s"/>
+                                </g>
+                            </g>
+
+                            <!-- flag on the summit -->
+                            <g class="flag">
+                                <line class="pole" x1="158.5" y1="70" x2="158.5" y2="54" stroke="#c9a47c" stroke-width="1"/>
+                                <path class="cloth" d="M158.5 54 L167 57 L158.5 60Z" fill="#ff5d5d"/>
+                            </g>
+
+                            <!-- guide on the summit -->
+                            <g class="guide">
+                                <path d="M146.4 60 Q147 51.6 150 50.6 Q153 51.6 153.6 60Z" fill="#eef0ff"/>
+                                <circle cx="150" cy="46.9" r="2.8" fill="#eef0ff"/>
+                                <g class="arm">
+                                    <line x1="150" y1="52.6" x2="141.6" y2="58.6" stroke="#eef0ff" stroke-width="1.7" stroke-linecap="round"/>
+                                    <g class="lantern">
+                                        <circle class="lantern-glow" cx="141" cy="59" r="9" fill="url(#sg-glow)"/>
+                                        <circle cx="141" cy="59" r="1.8" fill="#fff6d8"/>
+                                    </g>
+                                </g>
+                            </g>
+
+                            <!-- traveler -->
+                            <g class="walker">
+                                <path d="M-3.1 0 Q-3.4 -6 0 -6.8 Q3.4 -6 3.1 0Z" fill="#eef0ff"/>
+                                <circle cx="0" cy="-9.3" r="2.5" fill="#eef0ff"/>
+                                <line x1="4.4" y1="0.4" x2="5.2" y2="-10" stroke="#c9a47c" stroke-width=".9" stroke-linecap="round"/>
+                            </g>
+                        </g>
+                    </svg>
+                    <div class="saadi-scrim" aria-hidden="true"></div>
+                    <figcaption id="climber-quote" class="poem-text"></figcaption>
+                </figure>
             </div>
         </div>
-        
+
         <a class="scroll-down">
             <i class="fas fa-angle-down"></i>
         </a>
