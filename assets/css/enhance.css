@@ -45,22 +45,6 @@ body.light .aurora span { opacity: .22; }
     to   { transform: translate3d(6vw, -7vh, 0) scale(1.18); }
 }
 
-/* ---------- Scroll Progress Bar ---------- */
-#scroll-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    width: 100%;
-    transform: scaleX(0);
-    transform-origin: left;
-    z-index: 200;
-    background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3));
-    box-shadow: 0 0 10px var(--g2);
-    pointer-events: none;
-}
-body[dir="rtl"] #scroll-progress { left: auto; right: 0; transform-origin: right; }
-
 /* ---------- Mouse-following light (desktop only) ---------- */
 #cursor-glow {
     position: fixed;
@@ -77,12 +61,28 @@ body[dir="rtl"] #scroll-progress { left: auto; right: 0; transform-origin: right
 }
 @media (hover: none) { #cursor-glow { display: none; } }
 
-/* ---------- هدر ---------- */
-header {
+/* ---------- header ---------- */
+header.scrolled {
     backdrop-filter: blur(14px) saturate(160%);
     -webkit-backdrop-filter: blur(14px) saturate(160%);
-    border-bottom: 1px solid var(--border-color);
 }
+
+/* Scroll progress line on the bottom edge of the header (fixed brand colors, independent of the theme) */
+header::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #0fa39a, #f2a93b, #ee6c5a);
+    transform: scaleX(var(--scroll, 0));
+    transform-origin: left center;
+    opacity: 0;
+    transition: opacity .3s ease;
+    pointer-events: none;
+}
+body[dir="rtl"] header::after { transform-origin: right center; }
+header.scrolled::after { opacity: 1; }
 #logo {
     font-size: 1.5rem;
     background: linear-gradient(90deg, var(--g1), var(--g2), var(--g3), var(--g1));
@@ -327,28 +327,43 @@ footer::before {
 }
 .social-links a:hover { background: linear-gradient(135deg, var(--g1), var(--g3)); color: #fff; transform: translateY(-4px) scale(1.1); }
 
-/* ---------- Back-to-top button ---------- */
+/* ---------- Back-to-top button (with scroll progress ring) ---------- */
 #back-to-top {
     position: fixed;
-    bottom: 22px;
+    bottom: calc(22px + env(safe-area-inset-bottom, 0px));
     inset-inline-end: 22px;
     z-index: 90;
-    width: 46px;
-    height: 46px;
-    font-size: 1.1rem;
+    width: 52px;
+    height: 52px;
+    padding: 0;
+    border: 0;
     border-radius: 50%;
     display: grid;
     place-items: center;
-    color: #fff;
-    background: linear-gradient(135deg, var(--g1), var(--g2));
-    box-shadow: 0 8px 20px var(--shadow-color);
+    font-size: 1.05rem;
+    color: var(--accent-color);
+    background: var(--header-bg);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 26px -8px var(--shadow-color), 0 0 0 1px var(--border-color);
+    cursor: pointer;
     opacity: 0;
-    transform: translateY(20px) scale(.8);
+    transform: translateY(16px) scale(.8);
     pointer-events: none;
-    transition: opacity .3s, transform .3s var(--ease);
+    transition: opacity .35s ease, transform .35s var(--ease);
 }
 #back-to-top.show { opacity: 1; transform: none; pointer-events: auto; }
-#back-to-top:hover { background: linear-gradient(135deg, var(--g2), var(--g3)); color: #fff; }
+#back-to-top.show:hover { transform: translateY(-4px); }
+#back-to-top svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+#back-to-top circle { fill: none; stroke-width: 3; }
+#back-to-top .ring-bg { stroke: var(--border-color); }
+#back-to-top .ring-fg {
+    stroke: url(#ringGrad);
+    stroke-linecap: round;
+    stroke-dasharray: 144.5;
+    stroke-dashoffset: calc(144.5 - 144.5 * var(--scroll, 0));
+}
+body[dir="rtl"] #back-to-top svg { transform: rotate(-90deg) scaleY(-1); }
 
 /* ---------- Theme change animation (circle expanding from the button's position) ---------- */
 ::view-transition-old(root), ::view-transition-new(root) {
@@ -563,20 +578,46 @@ body[dir="rtl"] #experience-container > .experience-card:nth-child(even) { --rx:
 }
 
 /* ---------- Site Version (Footer) ---------- */
-.version-badge {
-    padding: .15rem .75rem;
-    border-radius: 999px;
-    font-size: .8rem;
-    font-weight: 600;
-    direction: ltr;
-    color: var(--accent-color);
-    border: 1px solid currentColor;
-    background: rgba(96, 165, 250, .1);
-    transition: transform .25s, background .25s;
+.footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: .9rem 1.5rem;
 }
-.version-badge:hover { transform: translateY(-2px); background: rgba(96, 165, 250, .22); text-decoration: none; }
-.version-badge:empty { display: none; }
-.footer-bottom { flex-wrap: wrap; gap: .6rem; }
+.version-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .25rem .8rem;
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 700;
+    direction: ltr;
+    color: #fff;
+    background: rgba(255, 255, 255, .1);
+    border: 1px solid rgba(255, 255, 255, .22);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    transition: transform .3s var(--ease), background-color .3s ease;
+}
+.version-badge i { color: #f2a93b; font-size: .72rem; }
+.version-badge::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, .7);
+    animation: dotPulseGreen 2.4s ease-out infinite;
+}
+.version-badge:hover { transform: translateY(-2px); background: rgba(255, 255, 255, .2); text-decoration: none; }
+.version-badge[hidden] { display: none; }
+@keyframes dotPulseGreen {
+    0%   { box-shadow: 0 0 0 0 rgba(74, 222, 128, .65); }
+    70%  { box-shadow: 0 0 0 8px rgba(74, 222, 128, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
 
 /* ---------- Users who prefer to disable animations ---------- */
 @media (prefers-reduced-motion: reduce) {

@@ -12,25 +12,30 @@
     /* ---------- Decorative Elements ---------- */
     document.body.insertAdjacentHTML('afterbegin', `
         <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
-        <div id="scroll-progress" aria-hidden="true"></div>
         ${canHover ? '<div id="cursor-glow" aria-hidden="true"></div>' : ''}
     `);
     const backBtn = document.createElement('button');
     backBtn.id = 'back-to-top';
     backBtn.type = 'button';
     backBtn.setAttribute('aria-label', 'Back to top');
-    backBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    backBtn.innerHTML = `
+    <svg viewBox="0 0 52 52" aria-hidden="true">
+        <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#0fa39a"/><stop offset=".55" stop-color="#f2a93b"/><stop offset="1" stop-color="#ee6c5a"/>
+        </linearGradient></defs>
+        <circle class="ring-bg" cx="26" cy="26" r="23"/><circle class="ring-fg" cx="26" cy="26" r="23"/>
+    </svg>
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>`;
     backBtn.addEventListener('click', () => scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }));
     document.body.appendChild(backBtn);
 
     /* ---------- Scroll: Progress bar + Back-to-top button + Scrollspy ---------- */
-    const bar = $('#scroll-progress');
     let ticking = false;
 
     function onScroll() {
         const h = document.documentElement;
         const max = h.scrollHeight - h.clientHeight;
-        bar.style.transform = `scaleX(${max > 0 ? h.scrollTop / max : 0})`;
+        h.style.setProperty('--scroll', (max > 0 ? Math.min(1, h.scrollTop / max) : 0).toFixed(4));
         backBtn.classList.toggle('show', h.scrollTop > 600);
         updateSpy();
         ticking = false;

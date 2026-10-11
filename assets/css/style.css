@@ -199,14 +199,14 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: var(--header-bg);
+    background-color: transparent;
     z-index: 50;
+    transition: background-color .35s ease, box-shadow .35s ease;
 }
 
 header.scrolled {
-    border-radius: 0 0 1rem 1rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(4px);
+    background-color: var(--header-bg);
+    box-shadow: 0 10px 30px -14px rgba(0, 0, 0, 0.45);
 }
 
 nav {
@@ -358,8 +358,6 @@ nav {
     background: var(--hero-gradient);
     position: relative;
     padding-inline: 1rem;
-    border-radius: 0 0 1rem 1rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(4px);
 }
 

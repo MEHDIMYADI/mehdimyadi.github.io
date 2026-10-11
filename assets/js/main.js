@@ -698,16 +698,21 @@ async function loadSiteVersion() {
     const el = document.getElementById('site-version');
     if (!el || el.dataset.loaded) return;
 
+    const show = tag => {
+        el.querySelector('.vb-text').textContent = /^v/i.test(tag) ? tag : `v${tag}`;
+        el.href = `https://github.com/${SITE_REPO}/releases/tag/${tag}`;
+        el.hidden = false;
+    };
+
     const cached = sessionStorage.getItem('site-version-cache');
-    if (cached) { el.textContent = cached; el.href = `https://github.com/${SITE_REPO}/releases/tag/${cached}`; }
+    if (cached) show(cached);
 
     const tag = await fetchLatestRelease(SITE_REPO);
     if (tag) {
-        el.textContent = tag;
-        el.href = `https://github.com/${SITE_REPO}/releases/tag/${tag}`;
+        show(tag);
         el.dataset.loaded = '1';
         sessionStorage.setItem('site-version-cache', tag);
-    }   // Error or no tag: cached value remains; otherwise, the badge is hidden.
+    }   // Error or no tag: cached value remains; otherwise, the badge stays hidden.
 }
 
 // -------------------------------
